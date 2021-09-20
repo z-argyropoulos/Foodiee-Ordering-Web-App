@@ -1,7 +1,7 @@
-import './App.css';
 import { theme } from './theme/muiTheme';
-import { ThemeProvider, Button, Paper } from '@mui/material';
+import { ThemeProvider, Paper } from '@mui/material';
 import MenuAppBar from './components/MenuAppBar';
+import CardsGridWrapper from './components/CardsGridWrapper';
 
 function App() {
   return (
@@ -10,7 +10,14 @@ function App() {
         <header className="App-header">
           <MenuAppBar />
         </header>
-        <Paper square></Paper>
+        <Paper
+          square
+          style={{
+            backgroundColor: '#242424',
+            minHeight: 'calc(100vh - 60px)',
+          }}>
+          <CardsGridWrapper />
+        </Paper>
       </div>
     </ThemeProvider>
   );

@@ -33,7 +33,7 @@ const MenuAppBar = () => {
             variant="h6"
             color="secondary"
             component="div"
-            sx={{ flexGrow: 1 }}>
+            sx={{ flexGrow: 1, textAlign: 'center' }}>
             <FastfoodIcon sx={{ mr: 1 }} />
             Foodiee
           </Typography>
