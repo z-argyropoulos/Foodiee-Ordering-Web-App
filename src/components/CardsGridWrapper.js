@@ -1,8 +1,9 @@
-import React from 'react';
+import { React, useState } from 'react';
 import CardRestaurant from './CardRestaurant';
 import { Grid } from '@mui/material';
+import CardRestaurantSkeleton from './CardRestaurantSkeleton';
 
-// fetch data
+// server restaurant data
 const dataArray = [
   {
     id: 234234,
@@ -43,6 +44,15 @@ const dataArray = [
 ];
 
 const CardsGridWrapper = () => {
+  const [loading, setLoading] = useState(true);
+
+  // IIFE to delay showing results -> skeleton
+  (function fakeDelayServer() {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2.5 * 1000);
+  })();
+
   return (
     <Grid
       container
@@ -50,11 +60,15 @@ const CardsGridWrapper = () => {
       justifyContent="center"
       rowSpacing={3}
       columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
-      {dataArray.map((restaurant) => (
-        <Grid key={restaurant.id} item xs={12} sm={6} lg={3}>
-          <CardRestaurant {...restaurant} />
-        </Grid>
-      ))}
+      {loading ? (
+        <CardRestaurantSkeleton amount={8} />
+      ) : (
+        dataArray.map((restaurant) => (
+          <Grid key={restaurant.id} item xs={12} sm={6} lg={3}>
+            <CardRestaurant {...restaurant} />
+          </Grid>
+        ))
+      )}
     </Grid>
   );
 };
