@@ -41,6 +41,41 @@ const dataArray = [
     expectedTime: '45min',
     minOrder: '9€',
   },
+  {
+    id: 345,
+    name: 'Macarooooon',
+    description: 'Colorful, playful macarons for sweet tooth people.',
+    tags: ['Macarons', 'Sweets', 'Gluten Free'],
+    expectedTime: '30min',
+    minOrder: '5€',
+  },
+  {
+    id: 2342,
+    name: 'Korean Cuisine',
+    description:
+      'Cupcake ipsum dolor sit amet halvah topping icing jelly beans. Jelly beans icing macaroon chocolate cake sweet roll jelly. Pudding gummies toffee pudding sugar plum halvah halvah pastry.',
+    tags: ['Rice', 'Vegetables', 'Seafood'],
+    expectedTime: '25min',
+    minOrder: '12€',
+  },
+  {
+    id: 3421,
+    name: 'ShaCKE ShaCKE',
+    description:
+      'Donec varius egestas mauris. Duis sit amet turpis lacinia, vulputate lectus vitae, lacinia lacus. Morbi vehicula, ex dapibus porttitor vehicula, felis velit tempor lectus, placerat vulputate libero leo sit amet justo.',
+    tags: ['Milkshakes', 'Cocktails', 'Drinks'],
+    expectedTime: '25min',
+    minOrder: '12€',
+  },
+  {
+    id: 4523,
+    name: "Sushi O'Clock",
+    description:
+      'Duis sit amet turpis lacinia, vulputate lectus vitae, lacinia lacus. Morbi vehicula, ex dapibus porttitor vehicula, felis velit tempor lectus, placerat vulputate libero leo sit amet justo.',
+    tags: ['Sushi', 'Fish', 'Vegeterian'],
+    expectedTime: '15min',
+    minOrder: '10€',
+  },
 ];
 
 const CardsGridWrapper = () => {

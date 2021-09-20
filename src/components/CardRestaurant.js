@@ -33,7 +33,7 @@ const CardRestaurant = ({
               <p>{description}</p>
             </Grid>
             <Grid item sx={{ mt: 1, mb: 1 }}>
-              {tags.map((tag) => (
+              {tags.sort().map((tag) => (
                 <Chip
                   key={tag}
                   label={tag}
