@@ -3,10 +3,10 @@ import Skeleton from '@mui/material/Skeleton';
 import Grid from '@mui/material/Grid';
 
 const CardRestaurantSkeleton = ({ amount }) => {
-  // amount ||= 4;
+  // amount ||= 4; default value
   return (
     <>
-      {Array.from(new Array(amount)).map((card, index) => (
+      {Array.from(new Array(amount)).map((_, index) => (
         <Grid item key={index} xs={12} sm={6} lg={3}>
           <Skeleton variant="rectangular" width="100%" height={300} />
           <Skeleton variant="text" width={150} height={50} />
