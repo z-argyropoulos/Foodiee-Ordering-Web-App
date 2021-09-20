@@ -10,7 +10,12 @@ function App() {
         <header className="App-header">
           <MenuAppBar />
         </header>
-        <Paper square style={{ backgroundColor: '#242424' }}>
+        <Paper
+          square
+          style={{
+            backgroundColor: '#242424',
+            minHeight: 'calc(100vh - 60px)',
+          }}>
           <CardsGridWrapper />
         </Paper>
       </div>

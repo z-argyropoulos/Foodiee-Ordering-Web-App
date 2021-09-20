@@ -1,5 +1,7 @@
 import React from 'react';
 import { Paper, Grid, Chip } from '@mui/material';
+import EuroIcon from '@mui/icons-material/Euro';
+import TimelapseIcon from '@mui/icons-material/Timelapse';
 
 const CardRestaurant = ({
   id,
@@ -30,7 +32,7 @@ const CardRestaurant = ({
             <Grid item>
               <p>{description}</p>
             </Grid>
-            <Grid item>
+            <Grid item sx={{ mt: 1, mb: 1 }}>
               {tags.map((tag) => (
                 <Chip
                   key={tag}
@@ -41,6 +43,28 @@ const CardRestaurant = ({
                   onClick={() => {}}
                 />
               ))}
+            </Grid>
+            <Grid container item sx={{ textAlign: 'center', mt: 1 }}>
+              <Grid
+                container
+                item
+                sx={{ justifyContent: 'center', fontSize: '0.8em' }}
+                xs={6}>
+                <Grid item xs={12}>
+                  <EuroIcon sx={{ mb: 1 }} />
+                </Grid>
+                <Grid item>Min. Order {minOrder}</Grid>
+              </Grid>
+              <Grid
+                container
+                item
+                sx={{ justifyContent: 'center', fontSize: '0.8em' }}
+                xs={6}>
+                <Grid item xs={12}>
+                  <TimelapseIcon sx={{ mb: 1 }} />
+                </Grid>
+                <Grid item>Delivery time {expectedTime}</Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>

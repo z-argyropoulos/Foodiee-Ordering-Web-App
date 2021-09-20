@@ -31,18 +31,27 @@ const dataArray = [
     expectedTime: '15min',
     minOrder: '3€',
   },
+  {
+    id: 234111,
+    name: 'Health It!',
+    description:
+      'Great selection of juices and other healthy bites such as salads and energy bars.',
+    tags: ['Vegeterian', 'Salads', 'Healthy'],
+    expectedTime: '45min',
+    minOrder: '9€',
+  },
 ];
 
 const CardsGridWrapper = () => {
   return (
     <Grid
       container
-      sx={{ p: 5, mt: 0 }}
+      sx={{ p: 2, mt: 0 }}
       justifyContent="center"
       rowSpacing={3}
       columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
       {dataArray.map((restaurant) => (
-        <Grid key={restaurant.id} item xs={12} sm={6} lg={4}>
+        <Grid key={restaurant.id} item xs={12} sm={6} lg={3}>
           <CardRestaurant {...restaurant} />
         </Grid>
       ))}
