@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import CardRestaurant from './CardRestaurant';
 import { Grid } from '@mui/material';
 import CardRestaurantSkeleton from './CardRestaurantSkeleton';
+import { useSpring, animated } from 'react-spring';
 
 // server restaurant data
 const dataArray = [
@@ -88,6 +89,13 @@ const CardsGridWrapper = () => {
     }, 2.5 * 1000);
   })();
 
+  // card animation
+  const props = useSpring({
+    to: { opacity: loading ? 0 : 1 },
+    from: { opacity: 0 },
+    delay: 150,
+  });
+
   return (
     <Grid
       container
@@ -100,7 +108,9 @@ const CardsGridWrapper = () => {
       ) : (
         dataArray.map((restaurant) => (
           <Grid key={restaurant.id} item xs={12} sm={6} lg={3}>
-            <CardRestaurant {...restaurant} />
+            <animated.div style={props}>
+              <CardRestaurant {...restaurant} />
+            </animated.div>
           </Grid>
         ))
       )}
