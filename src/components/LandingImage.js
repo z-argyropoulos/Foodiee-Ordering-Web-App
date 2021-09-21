@@ -1,12 +1,30 @@
 import './LandingImage.css';
-import React from 'react';
+import { React, useState } from 'react';
 import { Paper, Grid } from '@mui/material';
 import BurgerIcon from '../icons/burger.svg';
 import CocktailIcon from '../icons/cocktail.svg';
 import SaladIcon from '../icons/salad.svg';
 import SushiIcon from '../icons/sushi.svg';
+import { useSpring, animated } from 'react-spring';
 
 const LandingImage = () => {
+  const fadeUpIcons = useSpring({
+    to: { y: 0, opacity: 1 },
+    from: { y: 50, opacity: 0 },
+    config: {
+      duration: 400,
+    },
+    delay: 800,
+  });
+
+  const slideInText = useSpring({
+    to: { x: 0, opacity: 1 },
+    from: { x: -50, opacity: 0 },
+    config: {
+      duration: 400,
+    },
+  });
+
   return (
     <Paper
       square
@@ -32,24 +50,29 @@ const LandingImage = () => {
           alignItems: 'center',
         }}>
         <Grid item sm={12} md={6}>
-          <h1>
-            Order from multiple restaurants and get them all together!
-          </h1>
-          <p>
-            No more disagreements with friends on what to order on a
-            late night.
-          </p>
+          <animated.div style={slideInText}>
+            <h1>
+              Order from multiple restaurants and get them all
+              together!
+            </h1>
+            <p>
+              No more disagreements with friends on what to order on a
+              late night.
+            </p>
+          </animated.div>
         </Grid>
         <Grid
           item
           sm={12}
           md={6}
-          sx={{ mt: 3 }}
+          sx={{ mt: 3, display: 'flex' }}
           className="landingPage-icons">
-          <img src={BurgerIcon} alt="burger" />
-          <img src={CocktailIcon} alt="Cocktail" />
-          <img src={SaladIcon} alt="Salad" />
-          <img src={SushiIcon} alt="Sushi" />
+          <animated.div style={fadeUpIcons}>
+            <img src={BurgerIcon} alt="burger" />
+            <img src={CocktailIcon} alt="Cocktail" />
+            <img src={SaladIcon} alt="Salad" />
+            <img src={SushiIcon} alt="Sushi" />
+          </animated.div>
         </Grid>
       </Grid>
     </Paper>
