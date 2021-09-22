@@ -2,6 +2,7 @@ import { theme } from './theme/muiTheme';
 import { ThemeProvider, Paper } from '@mui/material';
 import MenuAppBar from './components/MenuAppBar';
 import CardsGridWrapper from './components/CardsGridWrapper';
+import LandingImage from './components/LandingImage';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <header className="App-header">
           <MenuAppBar />
         </header>
+        <LandingImage />
         <Paper
           square
           style={{
