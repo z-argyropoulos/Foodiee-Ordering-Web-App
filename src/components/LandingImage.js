@@ -1,5 +1,5 @@
 import './LandingImage.css';
-import { React, useState } from 'react';
+import { React } from 'react';
 import { Paper, Grid } from '@mui/material';
 import BurgerIcon from '../icons/burger.svg';
 import CocktailIcon from '../icons/cocktail.svg';
@@ -11,18 +11,12 @@ const LandingImage = () => {
   const fadeUpIcons = useSpring({
     to: { y: 0, opacity: 1 },
     from: { y: 50, opacity: 0 },
-    config: {
-      duration: 400,
-    },
     delay: 800,
   });
 
   const slideInText = useSpring({
     to: { x: 0, opacity: 1 },
     from: { x: -50, opacity: 0 },
-    config: {
-      duration: 400,
-    },
   });
 
   return (
@@ -30,7 +24,7 @@ const LandingImage = () => {
       square
       sx={{
         bgcolor: 'black',
-        height: '550px',
+        height: '600px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
