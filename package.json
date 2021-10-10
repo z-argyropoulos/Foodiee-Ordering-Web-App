@@ -1,0 +1,25 @@
+{
+  "name": "foodiee-ordering-web-app",
+  "version": "1.0.0",
+  "description": "A Food Ordering App with React and NodeJS",
+  "main": "app.js",
+  "private": "true",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "start-client": "yarn workspace client start",
+    "start-server": "yarn workspace server start-dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HRSArgyropoulos/Foodiee-ApolloClient-GraphQL.git"
+  },
+  "author": "HRSArgyropoulos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HRSArgyropoulos/Foodiee-ApolloClient-GraphQL/issues"
+  },
+  "homepage": "https://github.com/HRSArgyropoulos/Foodiee-ApolloClient-GraphQL#readme"
+}
