@@ -1,0 +1,15 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "start-dev": "set PORT=3000 && nodemon -r dotenv/config app.js"
+  },
+  "author": "HRSArgyropoulos",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
