@@ -4,13 +4,13 @@ const { productSchema } = require('./product');
 const mongoose = require('mongoose');
 
 const StoreSchema = new mongoose.Schema({
-  id: { type: Number, unique: true, required: true },
+  id: { type: String, unique: true, required: true },
   name: { type: String, required: true },
   description: String,
   address: storeAddressSchema,
   category: [String],
   rating: Number,
-  deliveryTimeRange: Array,
+  deliveryTimeRange: [Number],
   minOrder: String,
   isOpen: Boolean,
   catalog: [productSchema],
