@@ -6,4 +6,9 @@ const addStore = async (storeData) => {
   return store.save();
 };
 
-module.exports = { addStore };
+// Return all stores
+const getStores = async () => {
+  return Store.find({}, { __v: 0 }).exec();
+};
+
+module.exports = { addStore, getStores };
