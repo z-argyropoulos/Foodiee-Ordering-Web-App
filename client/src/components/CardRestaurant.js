@@ -4,10 +4,10 @@ import EuroIcon from '@mui/icons-material/Euro';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 
 const CardRestaurant = ({
-  id,
+  _id,
   name,
   description,
-  category,
+  categories,
   rating,
   deliveryTimeRange,
   minOrder,
@@ -17,7 +17,9 @@ const CardRestaurant = ({
       <Grid container>
         <Grid item>
           <img
-            src={process.env.PUBLIC_URL + `img/restaurants/${id}.jpg`}
+            src={
+              process.env.PUBLIC_URL + `img/restaurants/${_id}.jpg`
+            }
             alt={name + ' restaurant'}
             style={{
               objectFit: 'cover',
@@ -34,7 +36,7 @@ const CardRestaurant = ({
               <p>{description}</p>
             </Grid>
             <Grid item sx={{ mt: 1, mb: 1 }}>
-              {category.sort().map((category) => (
+              {categories.sort().map((category) => (
                 <Chip
                   key={category}
                   label={category}

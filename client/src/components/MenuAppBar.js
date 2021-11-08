@@ -16,7 +16,6 @@ const MenuAppBar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenu = (event) => {
-    console.log(event);
     setAnchorEl(event.currentTarget);
   };
 

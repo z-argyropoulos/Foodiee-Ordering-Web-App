@@ -1,22 +1,21 @@
 const { storeAddressSchema } = require('./address');
-const { productSchema } = require('./product');
+const { productCategoriesSchema } = require('./product');
 
 const mongoose = require('mongoose');
 
 const StoreSchema = new mongoose.Schema({
-  id: { type: String, unique: true, required: true },
   name: { type: String, required: true },
   description: String,
   address: storeAddressSchema,
-  category: [String],
+  categories: [String],
   rating: Number,
   deliveryTimeRange: [Number],
   minOrder: String,
   isOpen: Boolean,
-  catalog: [productSchema],
+  catalog: [productCategoriesSchema],
 });
 
-StoreSchema.index({ category: 1 });
+StoreSchema.index({ categories: 1 });
 
 // Export Models
 const Store = mongoose.model('store', StoreSchema);

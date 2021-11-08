@@ -1,10 +1,9 @@
 import axios from 'axios';
 
-const API = process.env.REACT_APP_SERVER_API + '/store';
+const API_STORES = process.env.REACT_APP_SERVER_API + '/stores';
 
 const getStores = () => {
-  console.log(`${API}/stores`);
-  return axios.get(`${API}/stores`);
+  return axios.get(API_STORES);
 };
 
 export { getStores };

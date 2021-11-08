@@ -20,7 +20,7 @@ const CardsGridWrapper = () => {
     // fetch all stores
     getStores()
       .then((response) => {
-        console.log(response.data.stores);
+        // fake server delay
         setTimeout(() => {
           setLoading(false);
           setStores(response.data.stores);
@@ -40,7 +40,7 @@ const CardsGridWrapper = () => {
         <CardRestaurantSkeleton amount={8} />
       ) : (
         stores.map((restaurant) => (
-          <Grid key={restaurant.id} item xs={12} sm={6} lg={3}>
+          <Grid key={restaurant._id} item xs={12} sm={6} lg={3}>
             <animated.div style={props}>
               <CardRestaurant {...restaurant} />
             </animated.div>
