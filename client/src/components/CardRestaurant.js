@@ -1,14 +1,15 @@
 import React from 'react';
-import { Paper, Grid, Chip } from '@mui/material';
+import { Paper, Grid, Chip, Typography } from '@mui/material';
 import EuroIcon from '@mui/icons-material/Euro';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 
 const CardRestaurant = ({
-  id,
+  _id,
   name,
   description,
-  tags,
-  expectedTime,
+  categories,
+  rating,
+  deliveryTimeRange,
   minOrder,
 }) => {
   return (
@@ -16,7 +17,9 @@ const CardRestaurant = ({
       <Grid container>
         <Grid item>
           <img
-            src={process.env.PUBLIC_URL + `img/restaurants/${id}.jpg`}
+            src={
+              process.env.PUBLIC_URL + `img/restaurants/${_id}.jpg`
+            }
             alt={name + ' restaurant'}
             style={{
               objectFit: 'cover',
@@ -33,10 +36,10 @@ const CardRestaurant = ({
               <p>{description}</p>
             </Grid>
             <Grid item sx={{ mt: 1, mb: 1 }}>
-              {tags.sort().map((tag) => (
+              {categories.sort().map((category) => (
                 <Chip
-                  key={tag}
-                  label={tag}
+                  key={category}
+                  label={category}
                   variant="outlined"
                   color="secondary"
                   sx={{ mr: 1, mb: 2 }}
@@ -53,7 +56,10 @@ const CardRestaurant = ({
                 <Grid item xs={12}>
                   <EuroIcon sx={{ mb: 1 }} />
                 </Grid>
-                <Grid item>Min. Order {minOrder}</Grid>
+                <Grid item>
+                  <Typography variant="h6">Min. Order</Typography>
+                  {minOrder}
+                </Grid>
               </Grid>
               <Grid
                 container
@@ -63,7 +69,24 @@ const CardRestaurant = ({
                 <Grid item xs={12}>
                   <TimelapseIcon sx={{ mb: 1 }} />
                 </Grid>
-                <Grid item>Delivery time {expectedTime}</Grid>
+                <Grid item>
+                  <Typography variant="h6">Delivery time</Typography>
+                  {deliveryTimeRange.join('-')} mins
+                </Grid>
+              </Grid>
+              <Grid
+                container
+                item
+                sx={{
+                  justifyContent: 'center',
+                  fontSize: '0.8em',
+                  mt: 3,
+                }}
+                xs={12}>
+                <Grid item xs={12}>
+                  <Typography variant="h6">Rating</Typography>
+                </Grid>
+                <Grid item>{rating}</Grid>
               </Grid>
             </Grid>
           </Grid>
