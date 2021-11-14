@@ -8,6 +8,7 @@ import {
   InMemoryCache,
   ApolloProvider,
 } from '@apollo/client';
+import { BrowserRouter } from 'react-router-dom';
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_SERVER_GRAPHQL_API,
@@ -17,7 +18,9 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')

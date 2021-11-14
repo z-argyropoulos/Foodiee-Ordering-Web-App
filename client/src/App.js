@@ -1,8 +1,7 @@
 import { theme } from './theme/muiTheme';
-import { ThemeProvider, Paper } from '@mui/material';
+import { ThemeProvider } from '@mui/material';
 import MenuAppBar from './components/MenuAppBar';
-import CardsGridWrapper from './components/CardsGridWrapper';
-import LandingImage from './components/LandingImage';
+import Router from './routes';
 
 function App() {
   return (
@@ -11,15 +10,7 @@ function App() {
         <header className="App-header">
           <MenuAppBar />
         </header>
-        <LandingImage />
-        <Paper
-          square
-          style={{
-            backgroundColor: '#242424',
-            minHeight: 'calc(100vh - 60px)',
-          }}>
-          <CardsGridWrapper />
-        </Paper>
+        <Router />
       </div>
     </ThemeProvider>
   );
