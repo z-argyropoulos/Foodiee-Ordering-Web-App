@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Grid, Chip, Typography } from '@mui/material';
+import { Paper, Grid, Chip } from '@mui/material';
 import EuroIcon from '@mui/icons-material/Euro';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import TimelapseIcon from '@mui/icons-material/Timelapse';

@@ -10,6 +10,9 @@ export const theme = createTheme({
     secondary: {
       main: '#ffeb3b',
     },
+    info: {
+      main: '#fff',
+    },
     text: {
       primary: '#ffffff',
     },
@@ -19,6 +22,6 @@ export const theme = createTheme({
     },
   },
   shape: {
-    borderRadius: 20,
+    borderRadius: 15,
   },
 });

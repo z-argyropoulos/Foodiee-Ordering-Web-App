@@ -6,6 +6,7 @@ import CocktailIcon from '../icons/cocktail.svg';
 import SaladIcon from '../icons/salad.svg';
 import SushiIcon from '../icons/sushi.svg';
 import { useSpring, animated } from 'react-spring';
+import AddressInput from './AddressInput';
 
 const LandingImage = () => {
   const fadeUpIcons = useSpring({
@@ -49,10 +50,7 @@ const LandingImage = () => {
               Order from multiple restaurants and get them all
               together!
             </h1>
-            <p>
-              No more disagreements with friends on what to order on a
-              late night.
-            </p>
+            <AddressInput />
           </animated.div>
         </Grid>
         <Grid
