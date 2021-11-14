@@ -14,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HRSArgyropoulos/Foodiee-ApolloClient-GraphQL.git"
+    "url": "git+https://github.com/HRSArgyropoulos/Foodiee-Ordering-Web-App.git"
   },
   "author": "HRSArgyropoulos",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/HRSArgyropoulos/Foodiee-ApolloClient-GraphQL/issues"
+    "url": "https://github.com/HRSArgyropoulos/Foodiee-Ordering-Web-App/issues"
   },
-  "homepage": "https://github.com/HRSArgyropoulos/Foodiee-ApolloClient-GraphQL#readme"
+  "homepage": "https://github.com/HRSArgyropoulos/Foodiee-Ordering-Web-App#readme"
 }
