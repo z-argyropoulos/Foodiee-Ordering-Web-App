@@ -1,8 +1,10 @@
-import React from 'react';
+import { React, useState, useEffect } from 'react';
 import { Paper, Grid, Chip } from '@mui/material';
 import EuroIcon from '@mui/icons-material/Euro';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
+import { useNavigate } from 'react-router-dom';
+import { PATH_STORES } from '../routes/paths';
 
 const CardRestaurant = ({
   _id,
@@ -13,9 +15,27 @@ const CardRestaurant = ({
   deliveryTimeRange,
   minOrder,
 }) => {
+  const [chipClicked, setChipClicked] = useState(false);
+  const [cardClicked, setCardClicked] = useState(false);
+
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (cardClicked && !chipClicked) {
+      console.log('card clicked');
+      navigate(`${PATH_STORES.store}/${_id}`);
+    }
+    return () => {
+      setChipClicked(false);
+      setCardClicked(false);
+    };
+  }, [chipClicked, cardClicked, navigate, _id]);
+
   return (
-    <Paper elevation={4} style={{ overflow: 'hidden' }}>
-      <Grid container>
+    <Paper
+      elevation={4}
+      style={{ overflow: 'hidden', cursor: 'pointer' }}>
+      <Grid container onClick={() => setCardClicked(true)}>
         <Grid item>
           <img
             src={
@@ -44,7 +64,9 @@ const CardRestaurant = ({
                   variant="outlined"
                   color="secondary"
                   sx={{ mr: 1, mb: 2 }}
-                  onClick={() => {}}
+                  onClick={() => {
+                    setChipClicked(true);
+                  }}
                 />
               ))}
             </Grid>
