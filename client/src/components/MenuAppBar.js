@@ -9,6 +9,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import MenuDrawer from './MenuDrawer';
+import { PATH_PAGE } from '../routes/paths';
+import { Link } from 'react-router-dom';
 
 const MenuAppBar = () => {
   const auth = true;
@@ -24,7 +26,7 @@ const MenuAppBar = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, mb: '50px' }}>
       <AppBar position="fixed">
         <Toolbar>
           <MenuDrawer />
@@ -32,9 +34,16 @@ const MenuAppBar = () => {
             variant="h6"
             color="secondary"
             component="div"
-            sx={{ flexGrow: 1, textAlign: 'center' }}>
-            <FastfoodIcon sx={{ mr: 1 }} />
-            Foodiee
+            sx={{
+              flexGrow: 1,
+              textAlign: 'center',
+            }}>
+            <Link
+              to={PATH_PAGE.root}
+              style={{ display: 'inline-block' }}>
+              <FastfoodIcon sx={{ mr: 1 }} />
+              Foodiee
+            </Link>
           </Typography>
           {auth && (
             <div>
