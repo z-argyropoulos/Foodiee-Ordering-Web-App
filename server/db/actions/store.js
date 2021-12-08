@@ -11,4 +11,9 @@ const getStores = async () => {
   return Store.find({}, { __v: 0 }).exec();
 };
 
-module.exports = { addStore, getStores };
+// Return store
+const getStoreDetails = async (storeId) => {
+  return Store.findOne({ _id: storeId }, { __v: 0 }).exec();
+};
+
+module.exports = { addStore, getStores, getStoreDetails };

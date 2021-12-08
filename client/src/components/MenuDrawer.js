@@ -6,6 +6,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
+import sidebarConfig from '../layout/sidebarConfig';
+import { NavLink } from 'react-router-dom';
 
 const MenuDrawer = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -14,7 +16,10 @@ const MenuDrawer = () => {
     setOpenDrawer(open);
   };
 
-  const menuItems = ['Home', 'Restaurants'];
+  const navLinkStyle = {
+    color: 'white',
+    textDecoration: 'none',
+  };
 
   const menuList = (
     <Box
@@ -25,10 +30,12 @@ const MenuDrawer = () => {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}>
       <List>
-        {menuItems.map((item) => (
-          <ListItem button key={item}>
-            <ListItemText primary={item} />
-          </ListItem>
+        {sidebarConfig.map((menuItem) => (
+          <NavLink style={navLinkStyle} to={menuItem.path}>
+            <ListItem button key={menuItem.path}>
+              <ListItemText primary={menuItem.title} />
+            </ListItem>
+          </NavLink>
         ))}
       </List>
     </Box>

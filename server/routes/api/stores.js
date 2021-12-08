@@ -1,5 +1,9 @@
 const router = require('express').Router();
-const { addStore, getStores } = require('../../db/actions/store');
+const {
+  addStore,
+  getStores,
+  getStoreDetails,
+} = require('../../db/actions/store');
 
 // add new store to db
 router.post('/create', (req, res) => {
@@ -14,6 +18,16 @@ router.get('/', (_, res) => {
   getStores()
     .then((stores) => {
       res.status(200).json({ stores });
+    })
+    .catch((err) => res.status(400).json({ err }));
+});
+
+// get specific store
+router.get('/byId', (req, res) => {
+  const { storeId } = req.query;
+  getStoreDetails(storeId)
+    .then((store) => {
+      res.status(200).json({ store });
     })
     .catch((err) => res.status(400).json({ err }));
 });
