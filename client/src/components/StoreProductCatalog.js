@@ -1,7 +1,7 @@
 import { Card, Typography, Grid } from '@mui/material';
 import AddToCartButton from './shared/AddToCartButton';
 
-const StoreProductCatalog = ({ catalog }) => {
+const StoreProductCatalog = ({ storeId, catalog }) => {
   return (
     <>
       <Typography variant="h4" sx={{ textAlign: 'center', my: 1 }}>
@@ -61,7 +61,11 @@ const StoreProductCatalog = ({ catalog }) => {
                             flexDirection: 'column',
                             justifyContent: 'center',
                           }}>
-                          <AddToCartButton maxQuantity={quantity} />
+                          <AddToCartButton
+                            storeId={storeId}
+                            productId={_id}
+                            maxQuantity={quantity}
+                          />
                         </Grid>
                       </Grid>
                     </Card>

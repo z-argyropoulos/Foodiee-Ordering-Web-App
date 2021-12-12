@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button, ButtonGroup } from '@mui/material';
+import useStoreCart from '../../hooks/useStoreCart';
 
-const AddToCartButton = ({ maxQuantity }) => {
+const AddToCartButton = ({ storeId, productId, maxQuantity }) => {
   const [openQuantitySelector, setOpenQuantitySelector] =
     useState(false);
   const [quantity, setQuantity] = useState(1);
@@ -32,6 +33,8 @@ const AddToCartButton = ({ maxQuantity }) => {
     setQuantity(1);
   };
 
+  const { addToCart } = useStoreCart();
+
   if (openQuantitySelector)
     return (
       <div>
@@ -53,7 +56,10 @@ const AddToCartButton = ({ maxQuantity }) => {
     <Button
       variant="outlined"
       sx={{ borderColor: 'yellow', color: 'white' }}
-      onClick={() => setOpenQuantitySelector(true)}>
+      onClick={() => {
+        addToCart(storeId, productId);
+        setOpenQuantitySelector(true);
+      }}>
       Add To Cart
     </Button>
   );
