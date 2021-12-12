@@ -47,9 +47,18 @@ const reducer = (state, action) => {
         (store) => store.storeId === storeId
       );
 
-      return state[storeIndex].products.filter(
+      const newProductsArr = state[storeIndex].products.filter(
         (product) => product.productId !== productId
       );
+
+      const newStateArr = [...state];
+
+      newStateArr.splice(storeIndex, 1, {
+        storeId,
+        products: newProductsArr,
+      });
+
+      return newStateArr;
     }
     case 'UPDATE_CART': {
       const { storeId, productId, quantity } = action.payload;
