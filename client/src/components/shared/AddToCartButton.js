@@ -8,16 +8,18 @@ const AddToCartButton = ({ storeId, productId, maxQuantity }) => {
   const [quantity, setQuantity] = useState(1);
   const [excessQuantity, setExcessQuantity] = useState(false);
 
+  const { addToCart, removeFromCart } = useStoreCart();
+
   useEffect(() => {
     // reset button on 0 quantity selected
     if (!quantity) {
-      console.log(quantity);
+      removeFromCart(storeId, productId);
       setOpenQuantitySelector(false);
       setQuantity(1);
     }
     // disable increment button on max quantity (and reset)
     setExcessQuantity(Boolean(quantity >= maxQuantity));
-  }, [quantity, maxQuantity]);
+  }, [quantity, maxQuantity, storeId, productId, removeFromCart]);
 
   // Quantity Counter
   const handleDecrement = () => {
@@ -29,11 +31,10 @@ const AddToCartButton = ({ storeId, productId, maxQuantity }) => {
   };
 
   const handleReset = () => {
+    removeFromCart(storeId, productId);
     setOpenQuantitySelector(false);
     setQuantity(1);
   };
-
-  const { addToCart } = useStoreCart();
 
   if (openQuantitySelector)
     return (

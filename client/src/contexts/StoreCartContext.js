@@ -6,9 +6,10 @@ const initialState = [];
 // Reducer
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_TO_CART':
+    case 'ADD_TO_CART': {
       const { storeId, productId } = action.payload;
-      // find store and product
+
+      // get store
       const storeIndex = state.findIndex(
         (store) => store.storeId === storeId
       );
@@ -37,7 +38,19 @@ const reducer = (state, action) => {
           },
         ];
       }
+    }
+    case 'REMOVE_FROM_CART': {
+      const { storeId, productId } = action.payload;
 
+      // get store
+      const storeIndex = state.findIndex(
+        (store) => store.storeId === storeId
+      );
+
+      return state[storeIndex].products.filter(
+        (product) => product.productId !== productId
+      );
+    }
     default:
       return state;
   }
@@ -56,11 +69,19 @@ const StoreCartProvider = ({ children }) => {
     });
   };
 
+  const removeFromCart = (storeId, productId) => {
+    dispatch({
+      type: 'REMOVE_FROM_CART',
+      payload: { storeId, productId },
+    });
+  };
+
   return (
     <StoreCartContext.Provider
       value={{
         carts: [...state],
         addToCart,
+        removeFromCart,
       }}>
       {children}
     </StoreCartContext.Provider>
