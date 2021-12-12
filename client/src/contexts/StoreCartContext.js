@@ -51,6 +51,25 @@ const reducer = (state, action) => {
         (product) => product.productId !== productId
       );
     }
+    case 'UPDATE_CART': {
+      const { storeId, productId, quantity } = action.payload;
+
+      // get store
+      const storeIndex = state.findIndex(
+        (store) => store.storeId === storeId
+      );
+
+      // get product
+      const productIndex = state[storeIndex].products.findIndex(
+        (product) => product.productId === productId
+      );
+
+      const newStateArr = [...state];
+      newStateArr[storeIndex].products[productIndex].quantity =
+        quantity;
+
+      return newStateArr;
+    }
     default:
       return state;
   }
@@ -76,12 +95,20 @@ const StoreCartProvider = ({ children }) => {
     });
   };
 
+  const updateCart = (storeId, productId, quantity) => {
+    dispatch({
+      type: 'UPDATE_CART',
+      payload: { storeId, productId, quantity },
+    });
+  };
+
   return (
     <StoreCartContext.Provider
       value={{
         carts: [...state],
         addToCart,
         removeFromCart,
+        updateCart,
       }}>
       {children}
     </StoreCartContext.Provider>

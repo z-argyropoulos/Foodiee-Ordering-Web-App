@@ -8,7 +8,7 @@ const AddToCartButton = ({ storeId, productId, maxQuantity }) => {
   const [quantity, setQuantity] = useState(1);
   const [excessQuantity, setExcessQuantity] = useState(false);
 
-  const { addToCart, removeFromCart } = useStoreCart();
+  const { addToCart, removeFromCart, updateCart } = useStoreCart();
 
   useEffect(() => {
     // reset button on 0 quantity selected
@@ -23,10 +23,12 @@ const AddToCartButton = ({ storeId, productId, maxQuantity }) => {
 
   // Quantity Counter
   const handleDecrement = () => {
+    updateCart(storeId, productId, quantity - 1);
     setQuantity((prev) => (prev ? prev - 1 : prev));
   };
 
   const handleIncrement = () => {
+    updateCart(storeId, productId, quantity + 1);
     setQuantity((prev) => prev + 1);
   };
 
@@ -58,7 +60,7 @@ const AddToCartButton = ({ storeId, productId, maxQuantity }) => {
       variant="outlined"
       sx={{ borderColor: 'yellow', color: 'white' }}
       onClick={() => {
-        addToCart(storeId, productId);
+        addToCart(storeId, productId, 1);
         setOpenQuantitySelector(true);
       }}>
       Add To Cart
