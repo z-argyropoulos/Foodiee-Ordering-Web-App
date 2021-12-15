@@ -47,11 +47,17 @@ const reducer = (state, action) => {
         (store) => store.storeId === storeId
       );
 
+      const newStateArr = [...state];
+
+      // check if cart is about to be empty to remove store
+      if (state[storeIndex].products.length === 1) {
+        newStateArr.splice(storeIndex, 1);
+        return newStateArr;
+      }
+
       const newProductsArr = state[storeIndex].products.filter(
         (product) => product.productId !== productId
       );
-
-      const newStateArr = [...state];
 
       newStateArr.splice(storeIndex, 1, {
         storeId,

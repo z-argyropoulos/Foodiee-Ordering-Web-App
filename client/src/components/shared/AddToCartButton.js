@@ -1,21 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Button, ButtonGroup } from '@mui/material';
-import useStoreCart from '../../hooks/useStoreCart';
+import { useStoreCart } from '../../hooks/useStoreCart';
 
 const AddToCartButton = ({ storeId, productId, maxQuantity }) => {
   const [openQuantitySelector, setOpenQuantitySelector] =
     useState(false);
-  const [quantity, setQuantity] = useState(1);
   const [excessQuantity, setExcessQuantity] = useState(false);
 
-  const { addToCart, removeFromCart, updateCart } = useStoreCart();
+  const { carts, addToCart, removeFromCart, updateCart } =
+    useStoreCart();
+
+  // get product quantity from store (if it exists)
+  const quantity = useMemo(() => {
+    return carts
+      .find((store) => store.storeId === storeId)
+      ?.products.find((product) => product.productId === productId)
+      ?.quantity;
+  }, [carts, productId, storeId]);
 
   useEffect(() => {
     // reset button on 0 quantity selected
-    if (!quantity) {
+    if (quantity === 0) {
       removeFromCart(storeId, productId);
       setOpenQuantitySelector(false);
-      setQuantity(1);
     }
     // disable increment button on max quantity (and reset)
     setExcessQuantity(Boolean(quantity >= maxQuantity));
@@ -24,18 +31,17 @@ const AddToCartButton = ({ storeId, productId, maxQuantity }) => {
   // Quantity Counter
   const handleDecrement = () => {
     updateCart(storeId, productId, quantity - 1);
-    setQuantity((prev) => (prev ? prev - 1 : prev));
+    //setQuantity((prev) => (prev ? prev - 1 : prev));
   };
 
   const handleIncrement = () => {
     updateCart(storeId, productId, quantity + 1);
-    setQuantity((prev) => prev + 1);
+    //setQuantity((prev) => prev + 1);
   };
 
   const handleReset = () => {
     removeFromCart(storeId, productId);
     setOpenQuantitySelector(false);
-    setQuantity(1);
   };
 
   if (openQuantitySelector)
