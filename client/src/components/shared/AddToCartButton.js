@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { Button, ButtonGroup } from '@mui/material';
-import { useStoreCart } from '../../hooks/useStoreCart';
+import { useStoresCart } from '../../hooks/useStoresCart';
 
 const AddToCartButton = ({ storeId, productId, maxQuantity }) => {
   const [openQuantitySelector, setOpenQuantitySelector] =
@@ -8,7 +8,7 @@ const AddToCartButton = ({ storeId, productId, maxQuantity }) => {
   const [excessQuantity, setExcessQuantity] = useState(false);
 
   const { carts, addToCart, removeFromCart, updateCart } =
-    useStoreCart();
+    useStoresCart();
 
   // get product quantity from store (if it exists)
   const quantity = useMemo(() => {

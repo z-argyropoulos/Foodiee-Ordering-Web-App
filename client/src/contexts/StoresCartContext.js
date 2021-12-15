@@ -91,7 +91,7 @@ const reducer = (state, action) => {
 };
 
 // Create Context
-const StoreCartContext = createContext();
+const StoresCartContext = createContext();
 
 const StoreCartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -118,7 +118,7 @@ const StoreCartProvider = ({ children }) => {
   };
 
   return (
-    <StoreCartContext.Provider
+    <StoresCartContext.Provider
       value={{
         carts: [...state],
         addToCart,
@@ -126,8 +126,8 @@ const StoreCartProvider = ({ children }) => {
         updateCart,
       }}>
       {children}
-    </StoreCartContext.Provider>
+    </StoresCartContext.Provider>
   );
 };
 
-export { StoreCartContext, StoreCartProvider };
+export { StoresCartContext, StoreCartProvider };

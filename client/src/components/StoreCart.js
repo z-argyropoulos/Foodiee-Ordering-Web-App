@@ -1,13 +1,13 @@
 import React from 'react';
-import { useCart, useStoreCart } from '../hooks/useStoreCart';
+import { useStoreCart, useStoresCart } from '../hooks/useStoresCart';
 
 const StoreCart = ({ storeId }) => {
-  const { products } = useCart(storeId);
-  const { carts } = useStoreCart();
+  const { products } = useStoreCart(storeId);
+  const { carts } = useStoresCart();
 
   return (
     <div>
-      <h3>Cart</h3>
+      <h3>This Store Cart</h3>
       <ul>
         {products &&
           products.map(({ productId, quantity }) => (
@@ -16,7 +16,7 @@ const StoreCart = ({ storeId }) => {
             </li>
           ))}
       </ul>
-      <h4>Summary Cart</h4>
+      <h4>Overall Cart</h4>
       <ul>
         {carts.map(({ storeId, products }) => (
           <li>
