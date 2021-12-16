@@ -7,24 +7,24 @@ const StoreCart = ({ storeId }) => {
 
   return (
     <div>
-      <h3>This Store Cart</h3>
+      <h3>This store's Cart</h3>
       <ul>
         {products &&
           products.map(({ productId, quantity }) => (
             <li key={productId}>
-              {productId} / {quantity}
+              Product Id: {productId} / Quantity: {quantity}
             </li>
           ))}
       </ul>
-      <h4>Overall Cart</h4>
+      <h3>Overall Cart</h3>
       <ul>
         {carts.map(({ storeId, products }) => (
           <li>
-            <h5>{storeId}</h5>
+            <h5>Store Id: {storeId}</h5>
             <ul>
               {products.map(({ productId, quantity }) => (
                 <li>
-                  {productId} / {quantity}
+                  Product Id: {productId} / Quantity: {quantity}
                 </li>
               ))}
             </ul>
