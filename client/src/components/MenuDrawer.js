@@ -31,7 +31,10 @@ const MenuDrawer = () => {
       onKeyDown={toggleDrawer(false)}>
       <List>
         {sidebarConfig.map((menuItem) => (
-          <NavLink style={navLinkStyle} to={menuItem.path}>
+          <NavLink
+            key={menuItem.path}
+            style={navLinkStyle}
+            to={menuItem.path}>
             <ListItem button key={menuItem.path}>
               <ListItemText primary={menuItem.title} />
             </ListItem>

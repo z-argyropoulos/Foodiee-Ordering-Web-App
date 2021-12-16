@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom';
-import { Stack } from '@mui/material';
+import { Stack, Grid } from '@mui/material';
 import StoreHeaderImage from '../components/StoreHeaderImage';
 import StoreDetails from '../components/StoreDetails';
 import StoreProductCatalog from '../components/StoreProductCatalog';
 import { useState, useEffect, useCallback } from 'react';
 import { getStore } from '../services/stores';
 import { storeInterface } from '../interfaces/stores';
+import StoreCart from '../components/StoreCart';
 
 const Store = () => {
   const { storeId } = useParams();
@@ -26,7 +27,17 @@ const Store = () => {
     <Stack sx={{ mt: '75px', mx: 2 }}>
       <StoreHeaderImage {...store} />
       <StoreDetails {...store} />
-      <StoreProductCatalog catalog={store.catalog} />
+      <Grid container>
+        <Grid item md={8}>
+          <StoreProductCatalog
+            storeId={storeId}
+            catalog={store.catalog}
+          />
+        </Grid>
+        <Grid item md={4}>
+          <StoreCart storeId={storeId} />
+        </Grid>
+      </Grid>
     </Stack>
   );
 };
