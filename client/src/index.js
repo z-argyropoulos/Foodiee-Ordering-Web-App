@@ -6,15 +6,19 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { StoreCartProvider } from './contexts/StoresCartContext';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <StoreCartProvider>
-        <App />
-      </StoreCartProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
+const container = document.getElementById('root');
+
+// create root
+const root = ReactDOM.createRoot(container);
+
+root.render(
+  // <React.StrictMode> disable for React 18 RC
+  <BrowserRouter>
+    <StoreCartProvider>
+      <App />
+    </StoreCartProvider>
+  </BrowserRouter>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
