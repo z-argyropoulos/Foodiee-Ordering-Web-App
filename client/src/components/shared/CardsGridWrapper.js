@@ -1,33 +1,15 @@
-import { React, useState, useEffect } from 'react';
-import CardRestaurant from './CardRestaurant';
+import CardRestaurant from '../CardRestaurant';
 import { Grid } from '@mui/material';
-import CardRestaurantSkeleton from './CardRestaurantSkeleton';
+import CardRestaurantSkeleton from '../CardRestaurantSkeleton';
 import { useSpring, animated } from 'react-spring';
-import { getStores } from '../services/stores';
 
-const CardsGridWrapper = () => {
-  const [stores, setStores] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+const CardsGridWrapper = ({ stores, loading }) => {
   // card animation
   const props = useSpring({
     to: { opacity: loading ? 0 : 1 },
     from: { opacity: 0 },
     delay: 150,
   });
-
-  useEffect(() => {
-    // fetch all stores
-    getStores()
-      .then((response) => {
-        // fake server delay
-        setTimeout(() => {
-          setLoading(false);
-          setStores(response.data.stores);
-        }, 2 * 1000);
-      })
-      .catch((err) => console.log(err));
-  }, []);
 
   return (
     <Grid
