@@ -23,7 +23,7 @@ const CardRestaurant = ({
   useEffect(() => {
     if (cardClicked && !chipClicked) {
       console.log('card clicked');
-      navigate(`${PATH_STORES.store}/${_id}`);
+      navigate(`/${PATH_STORES.store}/${_id}`);
     }
     return () => {
       setChipClicked(false);
