@@ -12,24 +12,29 @@ const CardsGridWrapper = ({ stores, loading }) => {
   });
 
   return (
-    <Grid
-      container
-      sx={{ p: 2, mt: 0 }}
-      justifyContent="center"
-      rowSpacing={3}
-      columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
-      {loading ? (
-        <CardRestaurantSkeleton amount={8} />
-      ) : (
-        stores.map((restaurant) => (
-          <Grid key={restaurant._id} item xs={12} sm={6} lg={3}>
-            <animated.div style={props}>
-              <CardRestaurant {...restaurant} />
-            </animated.div>
-          </Grid>
-        ))
-      )}
-    </Grid>
+    <>
+      <Grid
+        container
+        sx={{ p: 2, mt: 0 }}
+        justifyContent="center"
+        rowSpacing={3}
+        columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
+        {loading ? (
+          <CardRestaurantSkeleton amount={8} />
+        ) : (
+          stores.map((restaurant) => (
+            <Grid key={restaurant._id} item xs={12} sm={6} lg={3}>
+              <animated.div style={props}>
+                <CardRestaurant {...restaurant} />
+              </animated.div>
+            </Grid>
+          ))
+        )}
+      </Grid>
+      {!loading &&
+        !stores.length &&
+        'No stores could be found with the selected options. Please remove some filters to expand the search.'}
+    </>
   );
 };
 
