@@ -1,5 +1,5 @@
-import React from 'react';
 import { Card, CardMedia, Box, Typography } from '@mui/material';
+import { useStoreData } from '../hooks/useStoreData';
 
 const styles = {
   card: {
@@ -16,14 +16,15 @@ const styles = {
   },
 };
 
-const StoreHeaderImage = ({ _id, name, description }) => {
+const StoreHeaderImage = () => {
+  const { _id: id, name, description } = useStoreData();
   return (
     <>
       <Card style={styles.card}>
         <CardMedia
           component="img"
           height="400"
-          image={`${process.env.PUBLIC_URL}/img/restaurants/headers/${_id}.jpg`}
+          image={`${process.env.PUBLIC_URL}/img/restaurants/headers/${id}.jpg`}
         />
         <div style={styles.overlayText}>
           <Typography variant="h3">{name}</Typography>
