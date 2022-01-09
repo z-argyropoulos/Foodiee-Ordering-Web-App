@@ -1,8 +1,8 @@
-import React from 'react';
 import { Grid, Stack } from '@mui/material';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 import BusinessIcon from '@mui/icons-material/Business';
+import { useStoreData } from '../hooks/useStoreData';
 
 const ratingCategory = (rating) => {
   return rating <= 5
@@ -12,14 +12,8 @@ const ratingCategory = (rating) => {
     : 'Excellent';
 };
 
-const StoreDetails = ({
-  address,
-  categories,
-  rating,
-  deliveryTimeRange,
-  minOrder,
-  isOpen,
-}) => {
+const StoreDetails = () => {
+  const { address, rating, deliveryTimeRange } = useStoreData();
   return (
     <Stack sx={{ my: 4 }}>
       <Grid container justifyContent="center" sx={{ my: 1 }}>

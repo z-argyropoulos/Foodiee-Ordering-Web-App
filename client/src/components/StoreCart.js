@@ -1,5 +1,18 @@
 import React from 'react';
+import { Grid, Button } from '@mui/material';
 import { useStoreCart, useStoresCart } from '../hooks/useStoresCart';
+import { roundNumber } from '../functions/roundNumber';
+
+const calculateTotalPrice = (carts) => {
+  return carts.reduce((prevValue, curStore) => {
+    return (
+      prevValue +
+      curStore.products.reduce((prevValue, curProduct) => {
+        return prevValue + curProduct.price * curProduct.quantity;
+      }, 0)
+    );
+  }, 0);
+};
 
 const StoreCart = ({ storeId }) => {
   const { products } = useStoreCart(storeId);
@@ -8,29 +21,59 @@ const StoreCart = ({ storeId }) => {
   return (
     <div>
       <h3>This store's Cart</h3>
-      <ul>
+      <Grid container direction="column">
         {products &&
-          products.map(({ productId, quantity }) => (
-            <li key={productId}>
-              Product Id: {productId} / Quantity: {quantity}
-            </li>
+          products.map(({ productId, title, price, quantity }) => (
+            <Grid item key={productId} sx={{ mb: 2 }}>
+              <div>
+                {title} (x {quantity})
+              </div>
+              <div style={{ fontWeight: 'bold' }}>
+                {roundNumber(quantity * price)} €
+              </div>
+            </Grid>
           ))}
-      </ul>
+      </Grid>
       <h3>Overall Cart</h3>
-      <ul>
-        {carts.map(({ storeId, products }) => (
-          <li>
-            <h5>Store Id: {storeId}</h5>
-            <ul>
-              {products.map(({ productId, quantity }) => (
-                <li>
-                  Product Id: {productId} / Quantity: {quantity}
-                </li>
-              ))}
-            </ul>
-          </li>
+      <Grid container columnGap={5}>
+        {carts.map(({ storeId, name, products }) => (
+          <Grid item key={storeId}>
+            <h5>{name}</h5>
+            <Grid container direction="column">
+              {products &&
+                products.map(
+                  ({ productId, title, price, quantity }) => (
+                    <Grid item key={productId} sx={{ mb: 2 }}>
+                      <div>
+                        {title} (x {quantity})
+                      </div>
+                      <div
+                        style={{
+                          fontWeight: 'bold',
+                          paddingTop: '0.5rem',
+                        }}>
+                        {roundNumber(quantity * price)} €
+                      </div>
+                    </Grid>
+                  )
+                )}
+            </Grid>
+          </Grid>
         ))}
-      </ul>
+      </Grid>
+      {carts.length !== 0 && (
+        <>
+          <div>
+            Total Order: {roundNumber(calculateTotalPrice(carts))}
+          </div>
+          <Button
+            variant="contained"
+            color="secondary"
+            sx={{ my: 2 }}>
+            Checkout
+          </Button>
+        </>
+      )}
     </div>
   );
 };

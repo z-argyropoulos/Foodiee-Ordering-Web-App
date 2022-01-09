@@ -1,7 +1,9 @@
 import { Card, Typography, Grid } from '@mui/material';
 import AddToCartButton from './shared/AddToCartButton';
+import { useStoreData } from '../hooks/useStoreData';
 
-const StoreProductCatalog = ({ storeId, catalog }) => {
+const StoreProductCatalog = () => {
+  const { _id: storeId, name, catalog } = useStoreData();
   return (
     <>
       <Typography variant="h4" sx={{ textAlign: 'center', my: 1 }}>
@@ -15,8 +17,14 @@ const StoreProductCatalog = ({ storeId, catalog }) => {
             </Typography>
             <Grid item container rowSpacing={1}>
               {products.map(
-                ({ _id, title, description, price, quantity }) => (
-                  <Grid item key={_id} sm={12}>
+                ({
+                  _id: productId,
+                  title,
+                  description,
+                  price,
+                  quantity,
+                }) => (
+                  <Grid item key={productId} sm={12}>
                     <Card
                       sx={{
                         maxWidth: '1000px',
@@ -32,7 +40,7 @@ const StoreProductCatalog = ({ storeId, catalog }) => {
                               objectFit: 'cover',
                               objectPosition: 'center',
                             }}
-                            src={`${process.env.PUBLIC_URL}/img/restaurants/products/${_id}.jpg`}
+                            src={`${process.env.PUBLIC_URL}/img/restaurants/products/${productId}.jpg`}
                             alt={title}
                           />
                         </Grid>
@@ -62,9 +70,13 @@ const StoreProductCatalog = ({ storeId, catalog }) => {
                             justifyContent: 'center',
                           }}>
                           <AddToCartButton
-                            storeId={storeId}
-                            productId={_id}
-                            maxQuantity={quantity}
+                            store={{ storeId, name }}
+                            product={{
+                              productId,
+                              title,
+                              price,
+                              maxQuantity: quantity,
+                            }}
                           />
                         </Grid>
                       </Grid>

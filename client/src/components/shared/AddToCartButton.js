@@ -1,46 +1,48 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { Button, ButtonGroup } from '@mui/material';
 import { useStoresCart } from '../../hooks/useStoresCart';
+import { useStoreData } from '../../hooks/useStoreData';
 
-const AddToCartButton = ({ storeId, productId, maxQuantity }) => {
+const AddToCartButton = ({ store, product }) => {
+  const { _id: storeId } = useStoreData();
+  const { productId, maxQuantity } = product;
+  const { carts, addToCart, removeFromCart, updateCart } =
+    useStoresCart();
+
   const [openQuantitySelector, setOpenQuantitySelector] =
     useState(false);
   const [excessQuantity, setExcessQuantity] = useState(false);
-
-  const { carts, addToCart, removeFromCart, updateCart } =
-    useStoresCart();
 
   // get product quantity from store (if it exists)
   const quantity = useMemo(() => {
     return carts
       .find((store) => store.storeId === storeId)
-      ?.products.find((product) => product.productId === productId)
-      ?.quantity;
+      ?.products.find(
+        (cartProduct) => cartProduct.productId === productId
+      )?.quantity;
   }, [carts, productId, storeId]);
 
   useEffect(() => {
     // reset button on 0 quantity selected
     if (quantity === 0) {
-      removeFromCart(storeId, productId);
+      removeFromCart(store, product);
       setOpenQuantitySelector(false);
     }
     // disable increment button on max quantity (and reset)
     setExcessQuantity(Boolean(quantity >= maxQuantity));
-  }, [quantity, maxQuantity, storeId, productId, removeFromCart]);
+  }, [quantity, maxQuantity, store, product, removeFromCart]);
 
   // Quantity Counter
   const handleDecrement = () => {
-    updateCart(storeId, productId, quantity - 1);
-    //setQuantity((prev) => (prev ? prev - 1 : prev));
+    updateCart(store, product, quantity - 1);
   };
 
   const handleIncrement = () => {
-    updateCart(storeId, productId, quantity + 1);
-    //setQuantity((prev) => prev + 1);
+    updateCart(store, product, quantity + 1);
   };
 
   const handleReset = () => {
-    removeFromCart(storeId, productId);
+    removeFromCart(store, product);
     setOpenQuantitySelector(false);
   };
 
@@ -66,7 +68,7 @@ const AddToCartButton = ({ storeId, productId, maxQuantity }) => {
       variant="outlined"
       sx={{ borderColor: 'yellow', color: 'white' }}
       onClick={() => {
-        addToCart(storeId, productId, 1);
+        addToCart(store, product);
         setOpenQuantitySelector(true);
       }}>
       Add To Cart
