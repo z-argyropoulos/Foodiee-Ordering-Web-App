@@ -1,5 +1,14 @@
 import { createContext, useReducer } from 'react';
 
+// Carts Schema
+/* const carts = [
+  {
+    storeId,
+    ...other store data,
+    products: [{ productId, ...other product data, quantity }],
+  },
+]; */
+
 // Initial State
 const initialState = [];
 
@@ -7,7 +16,8 @@ const initialState = [];
 const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_TO_CART': {
-      const { storeId, productId } = action.payload;
+      const { store, product } = action.payload;
+      const { storeId } = store;
 
       // get store
       const storeIndex = state.findIndex(
@@ -17,10 +27,10 @@ const reducer = (state, action) => {
       if (storeIndex > -1) {
         const newStateArr = [...state];
         newStateArr.splice(storeIndex, 1, {
-          storeId,
+          ...store,
           products: [
             ...state[storeIndex].products,
-            { productId, quantity: 1 },
+            { ...product, quantity: 1 },
           ],
         });
         return newStateArr;
@@ -28,10 +38,10 @@ const reducer = (state, action) => {
         return [
           ...state,
           {
-            storeId,
+            ...store,
             products: [
               {
-                productId,
+                ...product,
                 quantity: 1,
               },
             ],
@@ -40,7 +50,9 @@ const reducer = (state, action) => {
       }
     }
     case 'REMOVE_FROM_CART': {
-      const { storeId, productId } = action.payload;
+      const { store, product } = action.payload;
+      const { storeId } = store;
+      const { productId } = product;
 
       // get store
       const storeIndex = state.findIndex(
@@ -49,7 +61,7 @@ const reducer = (state, action) => {
 
       const newStateArr = [...state];
 
-      // check if cart is about to be empty to remove store
+      // if product is the last item from this store, remove store
       if (state[storeIndex].products.length === 1) {
         newStateArr.splice(storeIndex, 1);
         return newStateArr;
@@ -60,14 +72,16 @@ const reducer = (state, action) => {
       );
 
       newStateArr.splice(storeIndex, 1, {
-        storeId,
+        ...store,
         products: newProductsArr,
       });
 
       return newStateArr;
     }
     case 'UPDATE_CART': {
-      const { storeId, productId, quantity } = action.payload;
+      const { store, product, quantity } = action.payload;
+      const { storeId } = store;
+      const { productId } = product;
 
       // get store
       const storeIndex = state.findIndex(
@@ -96,24 +110,24 @@ const StoresCartContext = createContext();
 const StoreCartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const addToCart = (storeId, productId, quantity) => {
+  const addToCart = (store, product) => {
     dispatch({
       type: 'ADD_TO_CART',
-      payload: { storeId, productId, quantity },
+      payload: { store, product },
     });
   };
 
-  const removeFromCart = (storeId, productId) => {
+  const removeFromCart = (store, product) => {
     dispatch({
       type: 'REMOVE_FROM_CART',
-      payload: { storeId, productId },
+      payload: { store, product },
     });
   };
 
-  const updateCart = (storeId, productId, quantity) => {
+  const updateCart = (store, product, quantity) => {
     dispatch({
       type: 'UPDATE_CART',
-      payload: { storeId, productId, quantity },
+      payload: { store, product, quantity },
     });
   };
 

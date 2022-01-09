@@ -3,7 +3,7 @@ import AddToCartButton from './shared/AddToCartButton';
 import { useStoreData } from '../hooks/useStoreData';
 
 const StoreProductCatalog = () => {
-  const { catalog, _id: storeId } = useStoreData();
+  const { _id: storeId, name, catalog } = useStoreData();
   return (
     <>
       <Typography variant="h4" sx={{ textAlign: 'center', my: 1 }}>
@@ -70,9 +70,13 @@ const StoreProductCatalog = () => {
                             justifyContent: 'center',
                           }}>
                           <AddToCartButton
-                            storeId={storeId}
-                            productId={productId}
-                            maxQuantity={quantity}
+                            store={{ storeId, name }}
+                            product={{
+                              productId,
+                              title,
+                              price,
+                              maxQuantity: quantity,
+                            }}
                           />
                         </Grid>
                       </Grid>

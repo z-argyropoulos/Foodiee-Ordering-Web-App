@@ -18,7 +18,7 @@ const Store = () => {
           <Grid item md={8}>
             <StoreProductCatalog />
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={4} sx={{ px: 3 }}>
             <StoreCart storeId={storeId} />
           </Grid>
         </Grid>
