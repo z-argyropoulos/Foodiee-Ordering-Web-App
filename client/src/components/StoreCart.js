@@ -2,6 +2,8 @@ import React from 'react';
 import { Grid, Button } from '@mui/material';
 import { useStoreCart, useStoresCart } from '../hooks/useStoresCart';
 import { roundNumber } from '../functions/roundNumber';
+import { PATH_PAGE } from '../routes/paths';
+import { Link } from 'react-router-dom';
 
 const calculateTotalPrice = (carts) => {
   return carts.reduce((prevValue, curStore) => {
@@ -70,7 +72,7 @@ const StoreCart = ({ storeId }) => {
             variant="contained"
             color="secondary"
             sx={{ my: 2 }}>
-            Checkout
+            <Link to={`/${PATH_PAGE.checkout}`}>Checkout</Link>
           </Button>
         </>
       )}
