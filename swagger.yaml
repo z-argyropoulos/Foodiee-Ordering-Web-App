@@ -1,0 +1,168 @@
+swagger: "2.0"
+info:
+  description: "REST API to provide store and catalog data to Foodie client application."
+  version: "0.1.0"
+  title: "Foodie Ordering App API"
+schemes:
+- "https"
+paths:
+  /api/stores:
+    get:
+      tags:
+      - "stores"
+      summary: "Return all stores"
+      description: "Return data from all stores in db"
+      operationId: "getStores"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Successfully return stores data"
+          schema:
+            type: "object"
+            properties:
+              stores:
+                type: "array"
+                items:
+                  $ref: "#/definitions/Store"
+        "400":
+          description: "Bad request"
+          schema:
+            type: "object"
+            properties:
+              error:
+               type: "string"
+  /api/stores/byId:
+    get:
+      tags:
+      - "stores"
+      summary: "Return store by id"
+      description: "Return one specific store data based on id provided"
+      operationId: "getStoreDetails"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "storeId"
+        in: "query"
+        description: "Store's id to get data"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Successfully return store data"
+          schema:
+            type: "object"
+            properties:
+              store:
+                $ref: "#/definitions/Store"
+        "400":
+          description: "Bad request"
+          schema:
+            type: "object"
+            properties:
+              error:
+               type: "string"
+  /api/stores/create:
+    post:
+      tags:
+      - "stores"
+      summary: "Create store"
+      description: "Insert store data to db"
+      operationId: "addStore"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body of store data that need to be inserted into the db"
+        required: true
+        schema:
+          $ref: "#/definitions/Store"
+      responses:
+        "200":
+          description: "Successfully create and add store to db"
+          schema:
+            type: "object"
+            properties:
+              store:
+                $ref: "#/definitions/Store"
+        "400":
+          description: "Bad request"
+          schema:
+            type: "object"
+            properties:
+              error:
+               type: "string"
+definitions:
+  Product:
+    type: "object"
+    properties:
+      _id:
+        type: "integer"
+      title:
+        type: "string"
+      description:
+        type: "string"
+      price:
+        type: "integer"
+      quantity:
+        type: "integer"
+  Catalog:
+      type: "object"
+      properties:
+        _id:
+          type: "integer"
+        category:
+          type: "string"
+        products:
+          type: "array"
+          items: 
+            $ref: "#/definitions/Product"
+  Address:
+    type: "object"
+    properties:
+      _id:
+        type: "integer"
+      street:
+        type: "string"
+      region:
+        type: "string"
+      postal_code:
+        type: "string"
+      city:
+        type: "string"
+  Store:
+    type: "object"
+    properties:
+      _id:
+        type: "integer"
+      name:
+        type: "string"
+      description:
+        type: "string"
+      address:
+        $ref: "#/definitions/Address"
+      categories:
+        type: "array"
+        items:
+          type: "string"
+      rating:
+        type: "integer"
+        format: "double"
+      deliveryTimeRange:
+        type: "array"
+        items:
+          type: "integer"
+      minOrder:
+        type: "string"
+      isOpen:
+        type: "boolean"
+      catalog:
+        type: "array"
+        items:
+          $ref: "#/definitions/Catalog"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

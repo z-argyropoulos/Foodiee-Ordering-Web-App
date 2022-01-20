@@ -10,7 +10,7 @@ router.post('/create', (req, res) => {
   // save store to DB
   addStore(req.body)
     .then((doc) => res.status(200).json({ store: doc }))
-    .catch((err) => res.status(400).json({ error: err }));
+    .catch((err) => res.status(400).json({ error: err.message }));
 });
 
 // get all stores from db
@@ -19,7 +19,7 @@ router.get('/', (_, res) => {
     .then((stores) => {
       res.status(200).json({ stores });
     })
-    .catch((err) => res.status(400).json({ err }));
+    .catch((err) => res.status(400).json({ error: err.message }));
 });
 
 // get specific store
@@ -29,7 +29,7 @@ router.get('/byId', (req, res) => {
     .then((store) => {
       res.status(200).json({ store });
     })
-    .catch((err) => res.status(400).json({ err }));
+    .catch((err) => res.status(400).json({ error: err.message }));
 });
 
 module.exports = router;
