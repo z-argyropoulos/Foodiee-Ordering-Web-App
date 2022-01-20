@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { StoreCartProvider } from './contexts/StoresCartContext';
+import { UserProvider } from './contexts/UserContext';
 
 const container = document.getElementById('root');
 
@@ -15,7 +16,9 @@ root.render(
   // <React.StrictMode> disable for React 18 RC
   <BrowserRouter>
     <StoreCartProvider>
-      <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
     </StoreCartProvider>
   </BrowserRouter>
   // </React.StrictMode>

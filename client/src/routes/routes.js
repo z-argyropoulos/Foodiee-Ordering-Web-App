@@ -20,6 +20,10 @@ const Router = () => {
       ],
     },
     {
+      path: PATH_PAGE.checkout,
+      element: <Checkout />,
+    },
+    {
       path: PATH_PAGE.root,
       element: <Home />,
     },
@@ -31,6 +35,9 @@ const Home = LazyLoadComponent(lazy(() => import('../pages/Home')));
 const Store = LazyLoadComponent(lazy(() => import('../pages/Store')));
 const StoresList = LazyLoadComponent(
   lazy(() => import('../pages/StoresList'))
+);
+const Checkout = LazyLoadComponent(
+  lazy(() => import('../pages/Checkout'))
 );
 
 export default Router;

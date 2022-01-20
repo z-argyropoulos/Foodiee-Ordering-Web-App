@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { Button, ButtonGroup } from '@mui/material';
 import { useStoresCart } from '../../hooks/useStoresCart';
-import { useStoreData } from '../../hooks/useStoreData';
 
 const AddToCartButton = ({ store, product }) => {
-  const { _id: storeId } = useStoreData();
+  const { storeId } = store;
+
   const { productId, maxQuantity } = product;
+
   const { carts, addToCart, removeFromCart, updateCart } =
     useStoresCart();
 
@@ -46,7 +47,7 @@ const AddToCartButton = ({ store, product }) => {
     setOpenQuantitySelector(false);
   };
 
-  if (openQuantitySelector)
+  if (openQuantitySelector || quantity)
     return (
       <div>
         <ButtonGroup variant="contained" color="secondary">

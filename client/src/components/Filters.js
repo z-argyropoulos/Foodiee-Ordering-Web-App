@@ -60,7 +60,9 @@ const Filters = ({ stores, setFilteredStores, setLoading }) => {
 
   return (
     <div>
-      <Typography variant="h5">Filters</Typography>
+      <Typography variant="subtitle" sx={{ display: 'block' }}>
+        Filters
+      </Typography>
       <FormControl component="fieldset">
         <FormLabel component="legend">Categories</FormLabel>
         <FormGroup>

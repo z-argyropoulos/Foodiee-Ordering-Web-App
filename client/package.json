@@ -15,7 +15,7 @@
     "history": "5",
     "react": "^18.0.0-rc.0",
     "react-dom": "^18.0.0-rc.0",
-    "react-router-dom": "6",
+    "react-router-dom": "^6",
     "react-scripts": "4.0.3",
     "react-spring": "^9.2.4",
     "web-vitals": "^1.0.1"
