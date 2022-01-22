@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  foodie-client:
+    build: ./client
+    env_file:
+     - ./client/.env.prod
+    image: foodie-client
+    container_name: foodie-client
+    ports:
+      - "3100:80"
+  foodie-server:
+    build: ./server
+    env_file:
+     - ./server/.env.prod
+    image: foodie-server
+    container_name: fooodie-server
+    ports: 
+      - "3000:3000"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo:5
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"

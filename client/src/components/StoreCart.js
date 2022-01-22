@@ -4,6 +4,7 @@ import { useStoreCart, useStoresCart } from '../hooks/useStoresCart';
 import { roundNumber } from '../functions/roundNumber';
 import { PATH_PAGE } from '../routes/paths';
 import { Link } from 'react-router-dom';
+import Accordion from './shared/Accordion';
 
 const calculateTotalPrice = (carts) => {
   return carts.reduce((prevValue, curStore) => {
@@ -38,28 +39,32 @@ const StoreCart = ({ storeId }) => {
       </Grid>
       <h3>Overall Cart</h3>
       <Grid container columnGap={5}>
-        {carts.map(({ storeId, name, products }) => (
+        {carts.map(({ storeId, storeName, products }) => (
           <Grid item key={storeId}>
-            <h5>{name}</h5>
-            <Grid container direction="column">
-              {products &&
-                products.map(
-                  ({ productId, title, price, quantity }) => (
-                    <Grid item key={productId} sx={{ mb: 2 }}>
-                      <div>
-                        {title} (x {quantity})
-                      </div>
-                      <div
-                        style={{
-                          fontWeight: 'bold',
-                          paddingTop: '0.5rem',
-                        }}>
-                        {roundNumber(quantity * price)} €
-                      </div>
-                    </Grid>
-                  )
-                )}
-            </Grid>
+            <h5>{storeName}</h5>
+            <Accordion
+              storeName={storeName}
+              totalPrice={roundNumber(calculateTotalPrice(carts))}>
+              <Grid container direction="column">
+                {products &&
+                  products.map(
+                    ({ productId, title, price, quantity }) => (
+                      <Grid item key={productId} sx={{ mb: 2 }}>
+                        <div>
+                          {title} (x {quantity})
+                        </div>
+                        <div
+                          style={{
+                            fontWeight: 'bold',
+                            paddingTop: '0.5rem',
+                          }}>
+                          {roundNumber(quantity * price)} €
+                        </div>
+                      </Grid>
+                    )
+                  )}
+              </Grid>
+            </Accordion>
           </Grid>
         ))}
       </Grid>
