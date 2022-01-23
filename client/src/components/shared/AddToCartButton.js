@@ -50,7 +50,10 @@ const AddToCartButton = ({ store, product }) => {
   if (openQuantitySelector || quantity)
     return (
       <div>
-        <ButtonGroup variant="contained" color="secondary">
+        <ButtonGroup
+          variant="contained"
+          color="secondary"
+          sx={{ m: 3 }}>
           <Button onClick={handleDecrement}>-</Button>
           <Button onClick={handleReset}>
             <span style={{ fontWeight: 'bold', fontSize: '1.2em' }}>
@@ -67,7 +70,7 @@ const AddToCartButton = ({ store, product }) => {
   return (
     <Button
       variant="outlined"
-      sx={{ borderColor: 'yellow', color: 'white' }}
+      sx={{ borderColor: 'yellow', color: 'white', m: 3 }}
       onClick={() => {
         addToCart(store, product);
         setOpenQuantitySelector(true);
