@@ -1,10 +1,11 @@
 import { lazy, Suspense } from 'react';
 import { useRoutes } from 'react-router';
 import { PATH_PAGE } from './paths';
+import Spinner from '../components/shared/Spinner';
 
 const LazyLoadComponent = (Component) => (props) => {
   return (
-    <Suspense fallback={<>Loading</>}>
+    <Suspense fallback={<Spinner />}>
       <Component {...props} />
     </Suspense>
   );
