@@ -4,17 +4,7 @@ import { useStoreCart, useStoresCart } from '../hooks/useStoresCart';
 import { roundNumber } from '../functions/roundNumber';
 import { PATH_PAGE } from '../routes/paths';
 import { Link } from 'react-router-dom';
-
-const calculateTotalPrice = (carts) => {
-  return carts.reduce((prevValue, curStore) => {
-    return (
-      prevValue +
-      curStore.products.reduce((prevValue, curProduct) => {
-        return prevValue + curProduct.price * curProduct.quantity;
-      }, 0)
-    );
-  }, 0);
-};
+import { storesSumPrice, productSumPrice } from '../helpers/sums';
 
 const StoreCart = ({ storeId }) => {
   const { products } = useStoreCart(storeId);
@@ -54,7 +44,10 @@ const StoreCart = ({ storeId }) => {
                           fontWeight: 'bold',
                           paddingTop: '0.5rem',
                         }}>
-                        {roundNumber(quantity * price)} €
+                        {roundNumber(
+                          productSumPrice(price, quantity)
+                        )}{' '}
+                        €
                       </div>
                     </Grid>
                   )
@@ -65,9 +58,7 @@ const StoreCart = ({ storeId }) => {
       </Grid>
       {carts.length !== 0 && (
         <>
-          <div>
-            Total Order: {roundNumber(calculateTotalPrice(carts))}
-          </div>
+          <div>Total Order: {roundNumber(storesSumPrice(carts))}</div>
           <Button
             variant="contained"
             color="secondary"
