@@ -2,24 +2,13 @@ import React from 'react';
 import { useUser } from '../hooks/useUser';
 import { useStoresCart } from '../hooks/useStoresCart';
 import { Stack, Typography, Box, Grid } from '@mui/material';
-import { roundNumber } from '../functions/roundNumber';
-
+import { storesSumPrice } from '../helpers/sums';
 import ProductDetails from '../components/shared/ProductDetails';
+import { storeSumPrice } from '../helpers/sums';
 
 const Checkout = () => {
   const { address } = useUser();
   const { carts } = useStoresCart();
-
-  const calculateTotalPrice = (carts) => {
-    return carts.reduce((prevValue, curStore) => {
-      return (
-        prevValue +
-        curStore.products.reduce((prevValue, curProduct) => {
-          return prevValue + curProduct.price * curProduct.quantity;
-        }, 0)
-      );
-    }, 0);
-  };
 
   return (
     <Stack sx={{ mt: '75px', mx: 2 }}>
@@ -29,7 +18,7 @@ const Checkout = () => {
             <>
               {carts.map((store) => (
                 <Box key={store.storeId} sx={{ my: 4 }}>
-                  <Typography variant="h4" sx={{ mb: 2 }}>
+                  <Typography variant="h5" sx={{ mb: 2 }}>
                     {store.storeName}
                   </Typography>
                   {store.products.map((product) => (
@@ -42,6 +31,9 @@ const Checkout = () => {
                       />
                     </Box>
                   ))}
+                  <Typography variant="body" sx={{}}>
+                    Total: {storeSumPrice(store.products)} €
+                  </Typography>
                 </Box>
               ))}
             </>
@@ -76,7 +68,7 @@ const Checkout = () => {
               </Box>
               {carts.length > 0 && (
                 <Typography variant="h6">
-                  Total: {roundNumber(calculateTotalPrice(carts))} €
+                  Total: {storesSumPrice(carts)} €
                 </Typography>
               )}
             </Grid>
