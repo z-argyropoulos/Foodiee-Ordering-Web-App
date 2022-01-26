@@ -18,7 +18,7 @@ const Checkout = () => {
             <>
               {carts.map((store) => (
                 <Box key={store.storeId} sx={{ my: 4 }}>
-                  <Typography variant="h4" sx={{ mb: 2 }}>
+                  <Typography variant="h5" sx={{ mb: 2 }}>
                     {store.storeName}
                   </Typography>
                   {store.products.map((product) => (
