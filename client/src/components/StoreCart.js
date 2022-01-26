@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid, Button } from '@mui/material';
 import { useStoreCart, useStoresCart } from '../hooks/useStoresCart';
-import { roundNumber } from '../functions/roundNumber';
 import { PATH_PAGE } from '../routes/paths';
 import { Link } from 'react-router-dom';
 import { storesSumPrice, productSumPrice } from '../helpers/sums';
@@ -21,13 +20,13 @@ const StoreCart = ({ storeId }) => {
                 {title} (x {quantity})
               </div>
               <div style={{ fontWeight: 'bold' }}>
-                {roundNumber(quantity * price)} €
+                {productSumPrice(price, quantity)} €
               </div>
             </Grid>
           ))}
       </Grid>
       <h3>Overall Cart</h3>
-      <Grid container columnGap={5}>
+      <Grid container columnGap={5} sx={{ mb: 2 }}>
         {carts.map(({ storeId, name, products }) => (
           <Grid item key={storeId}>
             <h5>{name}</h5>
@@ -44,10 +43,7 @@ const StoreCart = ({ storeId }) => {
                           fontWeight: 'bold',
                           paddingTop: '0.5rem',
                         }}>
-                        {roundNumber(
-                          productSumPrice(price, quantity)
-                        )}{' '}
-                        €
+                        {productSumPrice(price, quantity)} €
                       </div>
                     </Grid>
                   )
@@ -58,7 +54,7 @@ const StoreCart = ({ storeId }) => {
       </Grid>
       {carts.length !== 0 && (
         <>
-          <div>Total Order: {roundNumber(storesSumPrice(carts))}</div>
+          <div>Total Order: {storesSumPrice(carts)}</div>
           <Button
             variant="contained"
             color="secondary"

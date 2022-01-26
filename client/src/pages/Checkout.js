@@ -2,9 +2,9 @@ import React from 'react';
 import { useUser } from '../hooks/useUser';
 import { useStoresCart } from '../hooks/useStoresCart';
 import { Stack, Typography, Box, Grid } from '@mui/material';
-import { roundNumber } from '../functions/roundNumber';
 import { storesSumPrice } from '../helpers/sums';
 import ProductDetails from '../components/shared/ProductDetails';
+import { storeSumPrice } from '../helpers/sums';
 
 const Checkout = () => {
   const { address } = useUser();
@@ -31,6 +31,9 @@ const Checkout = () => {
                       />
                     </Box>
                   ))}
+                  <Typography variant="body" sx={{}}>
+                    Total: {storeSumPrice(store.products)} €
+                  </Typography>
                 </Box>
               ))}
             </>
@@ -65,7 +68,7 @@ const Checkout = () => {
               </Box>
               {carts.length > 0 && (
                 <Typography variant="h6">
-                  Total: {roundNumber(storesSumPrice(carts))} €
+                  Total: {storesSumPrice(carts)} €
                 </Typography>
               )}
             </Grid>

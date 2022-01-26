@@ -1,20 +1,26 @@
+import { roundNumber } from '../functions/roundNumber';
+
 const productSumPrice = (value, quantity) => {
-  return value * quantity;
+  return roundNumber(value * quantity);
 };
 
 const storeSumPrice = (products) => {
-  return products.reduce((prevValue, curProduct) => {
-    return (
-      prevValue +
-      productSumPrice(curProduct.price, curProduct.quantity)
-    );
-  }, 0);
+  return roundNumber(
+    products.reduce((prevValue, curProduct) => {
+      return (
+        prevValue +
+        productSumPrice(curProduct.price, curProduct.quantity)
+      );
+    }, 0)
+  );
 };
 
 const storesSumPrice = (carts) => {
-  return carts.reduce((prevValue, curStore) => {
-    return prevValue + storeSumPrice(curStore.products);
-  }, 0);
+  return roundNumber(
+    carts.reduce((prevValue, curStore) => {
+      return prevValue + storeSumPrice(curStore.products);
+    }, 0)
+  );
 };
 
 export { productSumPrice, storeSumPrice, storesSumPrice };
