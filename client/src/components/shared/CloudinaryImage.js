@@ -11,14 +11,28 @@ const cld = new Cloudinary({
 
 const CloudinaryImage = ({
   publicId = 'stores/404',
-  width = 400,
-  height = 400,
+  size = 'md',
   styles,
 }) => {
+  let imgDimensions;
+  switch (size) {
+    case 'sm':
+      imgDimensions = { width: 700, height: 350 };
+      break;
+    case 'lg':
+      imgDimensions = { width: 2000, height: 1000 };
+      break;
+    default:
+      imgDimensions = { width: 800, height: 500 };
+      break;
+  }
+
   // Get image based on publicID
   const myImage = cld.image(publicId);
 
-  myImage.resize(fill().width(width).height(height));
+  myImage.resize(
+    fill().width(imgDimensions.width).height(imgDimensions.height)
+  );
 
   return (
     <AdvancedImage

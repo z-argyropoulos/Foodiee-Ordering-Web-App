@@ -26,8 +26,7 @@ const StoreHeaderImage = () => {
       <Card style={styles.card}>
         <CloudinaryImage
           publicId={`store_covers/${id}`}
-          height="1000"
-          width={2000}
+          size="lg"
           styles={{
             height: '100%',
             objectFit: 'cover',

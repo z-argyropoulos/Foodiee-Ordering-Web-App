@@ -58,6 +58,12 @@ const Filters = ({ stores, setFilteredStores, setLoading }) => {
     }
   }, [checkedCategories, setFilteredStores, stores, setLoading]);
 
+  // Reset filters on any click or reset button
+  const handleReset = () => {
+    //
+    setCheckedCategories([]);
+  };
+
   return (
     <div>
       <Typography variant="subtitle" sx={{ display: 'block' }}>
@@ -73,6 +79,7 @@ const Filters = ({ stores, setFilteredStores, setLoading }) => {
                 control={
                   <Checkbox
                     checked={!checkedCategories.length}
+                    onClick={handleReset}
                     name="Any"
                     inputProps={{ 'aria-label': 'controlled' }}
                   />
@@ -87,7 +94,9 @@ const Filters = ({ stores, setFilteredStores, setLoading }) => {
                   key={category.id}
                   control={
                     <Checkbox
-                      checked={checkedCategories[category.title]}
+                      checked={checkedCategories.includes(
+                        category.title
+                      )}
                       name={category.title}
                       onChange={handleChange}
                       inputProps={{ 'aria-label': 'controlled' }}

@@ -10,6 +10,7 @@ const ProductDetails = ({
   description,
   price,
   maxQuantity,
+  size,
 }) => {
   return (
     <Grid item key={productId} sm={12}>
@@ -21,9 +22,8 @@ const ProductDetails = ({
         <Grid container>
           <Grid item xs={12} sm={4}>
             <CloudinaryImage
-              publicId={`products/${productId}_v2`}
-              width={800}
-              height={500}
+              publicId={`product/${productId}`}
+              size={size}
               styles={{
                 height: '100%',
                 objectFit: 'cover',

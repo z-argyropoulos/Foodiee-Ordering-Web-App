@@ -8,12 +8,9 @@ import { useNavigate } from 'react-router-dom';
 import { PATH_STORES } from '../routes/paths';
 
 const mockAddresses = [
-  'Address 1',
-  'Address 2',
-  'Address 3',
-  'Test1',
-  'Amsterdam',
-  'Add res',
+  'Korai 2, Moschato 183 45',
+  'Agias Paraskevis 29, Chalandri 152 32',
+  'Leof. Ir. Politechniou 28, Pireas 185 31',
 ];
 
 const AddressInput = () => {
