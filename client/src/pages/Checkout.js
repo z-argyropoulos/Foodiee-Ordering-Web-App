@@ -34,6 +34,7 @@ const Checkout = () => {
                         storeName={store.storeName}
                         productId={product.productId}
                         {...product}
+                        size="sm"
                       />
                     </Box>
                   ))}

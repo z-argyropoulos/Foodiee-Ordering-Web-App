@@ -27,9 +27,6 @@ const StoresList = () => {
 
   return (
     <Stack sx={{ mt: '75px', mx: 2 }}>
-      <Typography sx={{ textAlign: 'center' }} variant="h5">
-        Stores List
-      </Typography>
       <Typography variant="h5" sx={{ my: 2, fontStyle: 'italic' }}>
         Showing{' '}
         {address ? `store results for ${address}` : 'all stores'}
