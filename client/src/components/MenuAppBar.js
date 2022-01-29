@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import FastfoodIcon from '@mui/icons-material/Fastfood';
+import Scooter from '../icons/scooter.svg';
 import MenuDrawer from './MenuDrawer';
 import { PATH_PAGE } from '../routes/paths';
 import { Link } from 'react-router-dom';
@@ -38,11 +38,22 @@ const MenuAppBar = () => {
               flexGrow: 1,
               textAlign: 'center',
             }}>
-            <Link
-              to={PATH_PAGE.root}
-              style={{ display: 'inline-block' }}>
-              <FastfoodIcon sx={{ mr: 1 }} />
-              Foodiee
+            <Link to={PATH_PAGE.root}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  allignCenter: 'center',
+                }}>
+                <img
+                  src={Scooter}
+                  alt="Foodie Logo"
+                  style={{ width: '25px' }}
+                />
+                <Typography variant="h6" sx={{ ml: 1 }}>
+                  Foodiee
+                </Typography>
+              </Box>
             </Link>
           </Typography>
           {auth && (
