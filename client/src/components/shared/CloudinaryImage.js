@@ -1,7 +1,6 @@
 import { Cloudinary } from '@cloudinary/url-gen';
 import { fill } from '@cloudinary/url-gen/actions/resize';
 import { AdvancedImage } from '@cloudinary/react';
-import { useEffect } from 'react';
 
 // Create a Cloudinary instance and set your cloud name.
 const cld = new Cloudinary({
