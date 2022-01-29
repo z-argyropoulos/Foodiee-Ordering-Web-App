@@ -19,6 +19,9 @@ const CloudinaryImage = ({
     case 'sm':
       imgDimensions = { width: 700, height: 350 };
       break;
+    case 'lg':
+      imgDimensions = { width: 2000, height: 1000 };
+      break;
     default:
       imgDimensions = { width: 800, height: 500 };
       break;
