@@ -5,10 +5,16 @@ import { Stack, Typography, Box, Grid } from '@mui/material';
 import { storesSumPrice } from '../helpers/sums';
 import ProductDetails from '../components/shared/ProductDetails';
 import { storeSumPrice } from '../helpers/sums';
+import { useWindowTitle } from '../hooks/useWindowTitle';
+import { useScrollToTop } from '../hooks/useScrollToTop';
 
 const Checkout = () => {
   const { address } = useUser();
   const { carts } = useStoresCart();
+
+  useScrollToTop();
+
+  useWindowTitle('Checkout');
 
   return (
     <Stack sx={{ mt: '75px', mx: 2 }}>
