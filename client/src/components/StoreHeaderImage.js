@@ -1,9 +1,11 @@
-import { Card, CardMedia, Box, Typography } from '@mui/material';
+import { Card, Box, Typography } from '@mui/material';
 import { useStoreData } from '../hooks/useStoreData';
+import CloudinaryImage from './shared/CloudinaryImage';
 
 const styles = {
   card: {
     position: 'relative',
+    height: '45vh',
   },
   overlayText: {
     padding: '1rem',
@@ -12,7 +14,8 @@ const styles = {
     left: '0',
     backgroundImage:
       'linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0))',
-    width: '100%',
+    width: '95%',
+    fontSize: '0.97em',
   },
 };
 
@@ -21,10 +24,15 @@ const StoreHeaderImage = () => {
   return (
     <>
       <Card style={styles.card}>
-        <CardMedia
-          component="img"
-          height="400"
-          image={`${process.env.PUBLIC_URL}/img/restaurants/headers/${id}.jpg`}
+        <CloudinaryImage
+          publicId={`store_covers/${id}`}
+          height="1000"
+          width={2000}
+          styles={{
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
         />
         <div style={styles.overlayText}>
           <Typography variant="h3">{name}</Typography>

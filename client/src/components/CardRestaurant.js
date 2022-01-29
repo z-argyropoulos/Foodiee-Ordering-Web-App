@@ -5,6 +5,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 import { useNavigate } from 'react-router-dom';
 import { PATH_STORES } from '../routes/paths';
+import CloudinaryImage from './shared/CloudinaryImage';
 
 const CardRestaurant = ({
   _id,
@@ -36,15 +37,10 @@ const CardRestaurant = ({
       style={{ overflow: 'hidden', cursor: 'pointer' }}>
       <Grid container onClick={() => setCardClicked(true)}>
         <Grid item>
-          <img
-            src={
-              process.env.PUBLIC_URL + `img/restaurants/${_id}.jpg`
-            }
-            alt={name + ' restaurant'}
-            style={{
-              objectFit: 'cover',
-              width: '100%',
-            }}
+          <CloudinaryImage
+            publicId={`stores/${_id}`}
+            width="600"
+            height="400"
           />
         </Grid>
         <Grid container item>
@@ -52,7 +48,7 @@ const CardRestaurant = ({
             <Grid item>
               <h3>{name}</h3>
             </Grid>
-            <Grid item>
+            <Grid item sx={{ height: { xs: '185px', sm: '210px' } }}>
               <p>{description}</p>
             </Grid>
             <Grid item sx={{ mt: 1, mb: 1 }}>
