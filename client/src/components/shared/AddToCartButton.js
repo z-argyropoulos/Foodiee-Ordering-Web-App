@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Button, ButtonGroup } from '@mui/material';
+import { Button, ButtonGroup, Box } from '@mui/material';
 import { useStoresCart } from '../../hooks/useStoresCart';
 
 const AddToCartButton = ({ store, product }) => {
@@ -49,11 +49,15 @@ const AddToCartButton = ({ store, product }) => {
 
   if (openQuantitySelector || quantity)
     return (
-      <div>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: { xs: 'center', sm: 'left' },
+        }}>
         <ButtonGroup
           variant="contained"
           color="secondary"
-          sx={{ m: 3 }}>
+          sx={{ mx: 3, mb: 2 }}>
           <Button onClick={handleDecrement}>-</Button>
           <Button onClick={handleReset}>
             <span style={{ fontWeight: 'bold', fontSize: '1.2em' }}>
@@ -64,13 +68,20 @@ const AddToCartButton = ({ store, product }) => {
             +
           </Button>
         </ButtonGroup>
-      </div>
+      </Box>
     );
 
   return (
     <Button
       variant="outlined"
-      sx={{ borderColor: 'yellow', color: 'white', m: 3 }}
+      sx={{
+        borderColor: 'yellow',
+        color: 'white',
+        mx: 3,
+        mb: 2,
+        py: 1,
+        maxWidth: { sm: '150px' },
+      }}
       onClick={() => {
         addToCart(store, product);
         setOpenQuantitySelector(true);
