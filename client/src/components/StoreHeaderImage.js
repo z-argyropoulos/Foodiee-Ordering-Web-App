@@ -8,13 +8,13 @@ const styles = {
     height: '45vh',
   },
   overlayText: {
-    padding: '1rem',
+    padding: '1rem 0',
     position: 'absolute',
     bottom: '0',
     left: '0',
     backgroundImage:
       'linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0))',
-    width: '95%',
+    width: '100%',
     fontSize: '0.97em',
   },
 };
@@ -35,8 +35,10 @@ const StoreHeaderImage = () => {
           }}
         />
         <div style={styles.overlayText}>
-          <Typography variant="h3">{name}</Typography>
-          <Box>{description}</Box>
+          <div style={{ maxWidth: '95%', margin: '0 auto' }}>
+            <Typography variant="h3">{name}</Typography>
+            <Box>{description}</Box>
+          </div>
         </div>
       </Card>
     </>
