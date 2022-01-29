@@ -3,6 +3,7 @@ import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 import BusinessIcon from '@mui/icons-material/Business';
 import { useStoreData } from '../hooks/useStoreData';
+import { useWindowTitle } from '../hooks/useWindowTitle';
 
 const ratingCategory = (rating) => {
   return rating <= 5
@@ -13,7 +14,11 @@ const ratingCategory = (rating) => {
 };
 
 const StoreDetails = () => {
-  const { address, rating, deliveryTimeRange } = useStoreData();
+  const { address, rating, deliveryTimeRange, name } = useStoreData();
+
+  // set window title depending on store name
+  useWindowTitle(name);
+
   return (
     <Stack sx={{ my: 4 }}>
       <Grid container justifyContent="center" sx={{ my: 1 }}>
