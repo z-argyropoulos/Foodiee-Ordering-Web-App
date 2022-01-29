@@ -7,7 +7,14 @@ import { useUser } from '../hooks/useUser';
 import { useNavigate } from 'react-router-dom';
 import { PATH_STORES } from '../routes/paths';
 
-const mockAddresses = ['Address 1', 'Address 2', 'Address 3'];
+const mockAddresses = [
+  'Address 1',
+  'Address 2',
+  'Address 3',
+  'Test1',
+  'Amsterdam',
+  'Add res',
+];
 
 const AddressInput = () => {
   const { setAddress } = useUser();

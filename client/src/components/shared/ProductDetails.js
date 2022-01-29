@@ -16,14 +16,19 @@ const ProductDetails = ({
       <Card
         sx={{
           borderRadius: 2,
-          minHeight: '200px',
+          maxWidth: '1100px',
         }}>
         <Grid container>
           <Grid item xs={12} sm={4}>
             <CloudinaryImage
               publicId={`products/${productId}_v2`}
-              width={700}
-              height={360}
+              width={800}
+              height={500}
+              styles={{
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+              }}
             />
           </Grid>
           <Grid
