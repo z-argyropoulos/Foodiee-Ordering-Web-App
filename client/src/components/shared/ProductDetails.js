@@ -20,7 +20,7 @@ const ProductDetails = ({
           maxWidth: '1100px',
         }}>
         <Grid container>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={size === 'sm' ? 6 : 12} sm={4}>
             <CloudinaryImage
               publicId={`product/${productId}`}
               size={size}
@@ -36,7 +36,7 @@ const ProductDetails = ({
             item
             direction="column"
             justifyContent="space-between"
-            xs={12}
+            xs={size === 'sm' ? 6 : 12}
             sm={8}>
             <Grid item>
               <Grid
