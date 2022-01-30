@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import SwipableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';

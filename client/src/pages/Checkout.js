@@ -1,4 +1,3 @@
-import React from 'react';
 import { useUser } from '../hooks/useUser';
 import { useStoresCart } from '../hooks/useStoresCart';
 import { Stack, Typography, Box, Grid } from '@mui/material';
