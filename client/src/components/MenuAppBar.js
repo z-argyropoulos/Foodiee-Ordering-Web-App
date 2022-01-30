@@ -3,26 +3,27 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
 import Scooter from '../icons/scooter.svg';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import CloseIcon from '@mui/icons-material/Close';
 import MenuDrawer from './MenuDrawer';
 import { PATH_PAGE } from '../routes/paths';
 import { Link } from 'react-router-dom';
+import { useStoresCart } from '../hooks/useStoresCart';
+import { storesSumPrice } from '../helpers/sums';
+import StoreCart from './StoreCart';
 
 const MenuAppBar = () => {
-  const auth = true;
+  const { carts } = useStoresCart();
 
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [openCartList, setOpenCartList] = useState(false);
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleOpenCart = () => {
+    if (carts.length) setOpenCartList(true);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleCloseCart = () => {
+    setOpenCartList(false);
   };
 
   return (
@@ -56,39 +57,66 @@ const MenuAppBar = () => {
               </Box>
             </Link>
           </Typography>
-          {auth && (
-            <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit">
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+          <div onMouseEnter={handleOpenCart} onClick={handleOpenCart}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                flexWrap: 'nowrap',
+                rowGap: 0.3,
+                width: '100px',
+                cursor: 'pointer',
+              }}>
+              <ShoppingCartIcon
+                sx={{
+                  color:
+                    carts.length > 0 ? 'secondary.main' : '#383838',
+                  transition: '0.3s ease-in-out',
                 }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}>
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Adresses</MenuItem>
-                <MenuItem onClick={handleClose}>Orders</MenuItem>
-              </Menu>
-            </div>
-          )}
+              />
+              <Typography
+                variant="subtitle2"
+                sx={{
+                  color: carts.length > 0 ? 'white' : '#383838',
+                  transition: '0.3s ease-in-out',
+                }}>
+                Total: {storesSumPrice(carts)} €
+              </Typography>
+            </Box>
+          </div>
         </Toolbar>
       </AppBar>
+      {openCartList && (
+        <Box
+          position="fixed"
+          zIndex={1000}
+          borderRadius="0 0 20px 20px"
+          onMouseLeave={handleCloseCart}
+          sx={{
+            bgcolor: 'rgba(0,0,0,0.75)',
+            color: 'white',
+            width: '94%',
+            maxWidth: '500px',
+            margin: '0 auto',
+            top: '55px',
+            backdropFilter: 'blur(15px)',
+            right: { xs: '50%', sm: '0' },
+            transform: { xs: 'translateX(50%)', sm: 'initial' },
+            transition: '0.2s easy-in-out',
+          }}>
+          <Box sx={{ width: '90%', margin: '0 auto', pb: 1 }}>
+            <CloseIcon
+              sx={{
+                float: 'right',
+                cursor: 'pointer',
+              }}
+              onClick={handleCloseCart}
+            />
+            <StoreCart />
+          </Box>
+        </Box>
+      )}
     </Box>
   );
 };

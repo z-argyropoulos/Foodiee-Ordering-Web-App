@@ -15,36 +15,42 @@ const StoreCart = ({ storeId }) => {
 
   return (
     <div>
-      <h3>This store's Cart</h3>
-      <Grid container direction="column">
-        {products ? (
-          <>
-            {products &&
-              products.map(
-                ({ productId, title, price, quantity }) => (
-                  <Grid item key={productId} sx={{ mb: 2 }}>
-                    <div>
-                      {title} (x {quantity})
-                    </div>
-                    <div style={{ fontWeight: 'bold' }}>
-                      {productSumPrice(price, quantity)} €
-                    </div>
-                  </Grid>
-                )
-              )}
-            <Typography variant="body">
-              Total: {storeSumPrice(products)} €
-            </Typography>
-          </>
-        ) : (
-          <></>
-        )}
-      </Grid>
+      {storeId ? (
+        <>
+          <h3>This store's Cart</h3>
+          <Grid container direction="column">
+            {products ? (
+              <>
+                {products &&
+                  products.map(
+                    ({ productId, title, price, quantity }) => (
+                      <Grid item key={productId} sx={{ mb: 2 }}>
+                        <div>
+                          {title} (x {quantity})
+                        </div>
+                        <div style={{ fontWeight: 'bold' }}>
+                          {productSumPrice(price, quantity)} €
+                        </div>
+                      </Grid>
+                    )
+                  )}
+                <Typography variant="body">
+                  Total: {storeSumPrice(products)} €
+                </Typography>
+              </>
+            ) : (
+              <></>
+            )}
+          </Grid>
+        </>
+      ) : (
+        <></>
+      )}
       <h3>Overall Cart</h3>
       <Grid container columnGap={5} sx={{ mb: 2 }}>
-        {carts.map(({ storeId, name, products }) => (
+        {carts.map(({ storeId, storeName, products }) => (
           <Grid item key={storeId}>
-            <h5>{name}</h5>
+            <h5>{storeName}</h5>
             <Grid container direction="column">
               {products &&
                 products.map(
