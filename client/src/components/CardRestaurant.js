@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Paper, Grid, Chip } from '@mui/material';
 import EuroIcon from '@mui/icons-material/Euro';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';

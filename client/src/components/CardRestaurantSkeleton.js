@@ -1,4 +1,3 @@
-import React from 'react';
 import Skeleton from '@mui/material/Skeleton';
 import Grid from '@mui/material/Grid';
 

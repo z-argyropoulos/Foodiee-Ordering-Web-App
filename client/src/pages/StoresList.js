@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Stack, Typography } from '@mui/material';
 import Filters from '../components/Filters';
 import CardsGridWrapper from '../components/shared/CardsGridWrapper';

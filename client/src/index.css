@@ -20,3 +20,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.landingPage-icons img {
+  width: 100px;
+  margin: 0 0.5rem;
+}
+
+@media (max-width: 550px) {
+  .landingPage-icons img {
+    width: 55px;
+  }
+}

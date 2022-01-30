@@ -1,5 +1,3 @@
-import './LandingImage.css';
-import { React } from 'react';
 import { Paper, Grid } from '@mui/material';
 import BurgerIcon from '../icons/burger.svg';
 import CocktailIcon from '../icons/cocktail.svg';

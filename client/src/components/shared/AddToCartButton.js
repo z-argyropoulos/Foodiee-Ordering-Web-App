@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Button, ButtonGroup, Box } from '@mui/material';
 import { useStoresCart } from '../../hooks/useStoresCart';
 

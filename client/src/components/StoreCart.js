@@ -1,4 +1,3 @@
-import React from 'react';
 import { Grid, Button, Typography } from '@mui/material';
 import { useStoreCart, useStoresCart } from '../hooks/useStoresCart';
 import { PATH_PAGE } from '../routes/paths';
