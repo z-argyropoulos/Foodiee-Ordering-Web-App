@@ -1,4 +1,4 @@
-/* import { useLayoutEffect } from 'react'; */
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Stack, Grid } from '@mui/material';
 import StoreHeaderImage from '../components/StoreHeaderImage';
@@ -13,20 +13,26 @@ const Store = () => {
 
   useScrollToTop();
 
+  const [dataFetched, setDataFetched] = useState(false);
+
   return (
-    <StoreDataProvider storeId={storeId}>
-      <Stack sx={{ mt: '75px', mx: 2 }}>
-        <StoreHeaderImage />
-        <StoreDetails />
-        <Grid container>
-          <Grid item md={8}>
-            <StoreProductCatalog />
+    <StoreDataProvider
+      setDataFetched={setDataFetched}
+      storeId={storeId}>
+      {dataFetched && (
+        <Stack sx={{ mt: '75px', mx: 2 }}>
+          <StoreHeaderImage />
+          <StoreDetails />
+          <Grid container>
+            <Grid item md={8}>
+              <StoreProductCatalog />
+            </Grid>
+            <Grid item md={4} sx={{ px: 3 }}>
+              <StoreCart storeId={storeId} />
+            </Grid>
           </Grid>
-          <Grid item md={4} sx={{ px: 3 }}>
-            <StoreCart storeId={storeId} />
-          </Grid>
-        </Grid>
-      </Stack>
+        </Stack>
+      )}
     </StoreDataProvider>
   );
 };
