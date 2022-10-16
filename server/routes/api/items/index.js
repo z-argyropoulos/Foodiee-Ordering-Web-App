@@ -1,12 +1,6 @@
 const router = require('express').Router();
-const { addItem } = require('../../../db/actions/item');
+const itemsController = require('../../../db/controllers/items');
 
-const createItem = (req, res) => {
-  addItem(req.body)
-    .then((item) => res.status(200).json({ item }))
-    .catch((err) => res.status(400).json({ error: err.message }));
-};
-
-router.post('/create', createItem);
+router.post('/create', itemsController.create);
 
 module.exports = router;
