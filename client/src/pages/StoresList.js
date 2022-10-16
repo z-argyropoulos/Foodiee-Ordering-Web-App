@@ -19,7 +19,7 @@ const StoresList = () => {
         // fake server delay
         setTimeout(() => {
           setLoading(false);
-          setStores(response.data.stores);
+          setStores(response.data.restaurants);
         }, 1.5 * 1000);
       })
       .catch((err) => console.log(err));

@@ -11,13 +11,13 @@ const StoreProductCatalog = () => {
         Catalog
       </Typography>
       <Grid container>
-        {catalog.map(({ category, products }) => (
+        {catalog.map(({ category, items }) => (
           <Grid item key={category} sx={{ my: 2 }}>
             <Typography variant="h5" sx={{ mb: 4 }}>
               {category}
             </Typography>
             <Grid item container rowSpacing={1}>
-              {products.map((product) => (
+              {items.map((product) => (
                 <ProductDetails
                   key={product._id}
                   storeId={storeId}
