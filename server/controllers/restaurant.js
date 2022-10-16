@@ -2,9 +2,9 @@ const {
   addRestaurant,
   getRestaurants,
   getRestaurantDetails,
-} = require('../../db/actions/restaurant');
-const { getItemsByRestaurantId } = require('../../db/actions/item');
-const { groupByKey } = require('../../helpers/group');
+} = require('../actions/restaurant');
+const { getItemsByRestaurantId } = require('../actions/item');
+const { groupByKey } = require('../helpers/group');
 
 const restaurantController = {
   create: (req, res) => {

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const itemsController = require('../../../db/controllers/items');
+const itemsController = require('../../../controllers/items');
 
 router.post('/create', itemsController.create);
 
