@@ -14,7 +14,7 @@ const StoreDataProvider = ({ storeId, setDataFetched, children }) => {
 
   const fetchStore = useCallback(() => {
     getStore(storeId).then(({ data }) => {
-      setStore(data.store);
+      setStore(data.restaurant);
       setDataFetched(true);
     });
   }, [storeId, setDataFetched]);

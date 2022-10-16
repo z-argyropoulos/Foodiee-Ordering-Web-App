@@ -15,7 +15,7 @@ const Home = () => {
         // fake server delay
         setTimeout(() => {
           setLoading(false);
-          setStores(response.data.stores);
+          setStores(response.data.restaurants);
         }, 2 * 1000);
       })
       .catch((err) => console.log(err));
