@@ -1,4 +1,4 @@
-const { addItem } = require('../../db/actions/item');
+const { addItem } = require('../actions/item');
 
 const itemsController = {
   create: (req, res) => {

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const restaurantController = require('../../../db/controllers/restaurant');
+const restaurantController = require('../../../controllers/restaurant');
 
 // add new restaurant to db
 router.post('/create', restaurantController.create);

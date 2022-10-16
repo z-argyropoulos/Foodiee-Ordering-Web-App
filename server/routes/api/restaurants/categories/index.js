@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const restaurantCategoryController = require('../../../../db/controllers/restaurantCategories');
+const restaurantCategoryController = require('../../../../controllers/restaurantCategories');
 
 router.post('/create', restaurantCategoryController.create);
 
