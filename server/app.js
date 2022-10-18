@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const db = require('./db/connection'); // DB connection
 const routes = require('./routes');
+const graphQL = require('./graphql');
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors());
 
 // routes
 app.use('/', routes);
+app.use('/graphql', graphQL);
 
 // express listen port
 app.listen(process.env.PORT || 3000, () => {
