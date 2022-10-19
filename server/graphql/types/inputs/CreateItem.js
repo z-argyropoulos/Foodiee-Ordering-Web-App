@@ -1,5 +1,5 @@
 const {
-  GraphQLObjectType,
+  GraphQLInputObjectType,
   GraphQLString,
   GraphQLNonNull,
   GraphQLInt,
@@ -7,11 +7,11 @@ const {
 } = require('graphql');
 const { GraphQLObjectID } = require('graphql-scalars');
 
-const ItemType = new GraphQLObjectType({
-  name: 'Item',
-  description: 'Restaurant item included in the catalog',
+const CreateItem = new GraphQLInputObjectType({
+  name: 'NewItem',
+  description: 'Payload fields to create item',
   fields: () => ({
-    _id: { type: new GraphQLNonNull(GraphQLObjectID) },
+    restaurantId: { type: GraphQLObjectID },
     title: {
       type: new GraphQLNonNull(GraphQLString),
     },
@@ -24,4 +24,4 @@ const ItemType = new GraphQLObjectType({
   }),
 });
 
-module.exports = ItemType;
+module.exports = CreateItem;
