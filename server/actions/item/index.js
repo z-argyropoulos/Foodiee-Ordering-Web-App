@@ -9,4 +9,8 @@ const getItemsByRestaurantId = async (restaurantId) => {
   return Item.find({ restaurantId });
 };
 
-module.exports = { addItem, getItemsByRestaurantId };
+const getItems = async () => {
+  return Item.find({});
+};
+
+module.exports = { addItem, getItemsByRestaurantId, getItems };
