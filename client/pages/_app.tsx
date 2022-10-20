@@ -1,5 +1,8 @@
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
+import { theme } from '../src/theme/muiTheme';
+import { ThemeProvider } from '@mui/material';
+/* import MenuAppBar from '../src/components/MenuAppBar'; */
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,7 +17,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           Foodie - Order from multiple restaurants at the same time
         </title>
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        {/* <MenuAppBar /> */}
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 }
