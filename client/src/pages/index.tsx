@@ -2,7 +2,7 @@ import CardsGridWrapper from '../components/shared/CardsGridWrapper';
 import LandingImage from '../components/LandingImage';
 import { Paper } from '@mui/material';
 import { getStores } from '../services/stores';
-import IRestaurant from '../interfaces/IRestaurant';
+import IRestaurant from '@interfaces/IRestaurant';
 
 export interface IHomeProps {
   restaurants: [IRestaurant];

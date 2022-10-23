@@ -2,7 +2,7 @@ import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { StoreCartProvider } from '../contexts/StoresCartContext';
 import { UserProvider } from '../contexts/UserContext';
-import { theme } from '../theme/muiTheme';
+import { theme } from '../themes/muiTheme';
 import { ThemeProvider } from '@mui/material';
 import MenuAppBar from '../components/MenuAppBar';
 import '../styles/app.scss';
