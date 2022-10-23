@@ -89,9 +89,8 @@ const Filters = ({ stores, setFilteredStores, setLoading }) => {
             </Grid>
 
             {categories.map((category) => (
-              <Grid item>
+              <Grid item key={category.id}>
                 <FormControlLabel
-                  key={category.id}
                   control={
                     <Checkbox
                       checked={checkedCategories.includes(

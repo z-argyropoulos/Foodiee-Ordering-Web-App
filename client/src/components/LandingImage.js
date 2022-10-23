@@ -1,10 +1,11 @@
 import { Paper, Grid } from '@mui/material';
-import BurgerIcon from '../icons/burger.svg';
-import CocktailIcon from '../icons/cocktail.svg';
-import SaladIcon from '../icons/salad.svg';
-import SushiIcon from '../icons/sushi.svg';
+import BurgerIcon from '../../public/icons/burger.svg';
+import CocktailIcon from '../../public/icons/cocktail.svg';
+import SaladIcon from '../../public/icons/salad.svg';
+import SushiIcon from '../../public/icons/sushi.svg';
 import { useSpring, animated } from 'react-spring';
 import AddressInput from './AddressInput';
+import Image from 'next/image';
 
 const LandingImage = () => {
   const fadeUpIcons = useSpring({
@@ -51,17 +52,32 @@ const LandingImage = () => {
             <AddressInput />
           </animated.div>
         </Grid>
-        <Grid
-          item
-          sm={12}
-          md={6}
-          sx={{ mt: 3, display: 'flex' }}
-          className="landingPage-icons">
+        <Grid item sm={12} md={6}>
           <animated.div style={fadeUpIcons}>
-            <img src={BurgerIcon} alt="burger" />
-            <img src={CocktailIcon} alt="Cocktail" />
-            <img src={SaladIcon} alt="Salad" />
-            <img src={SushiIcon} alt="Sushi" />
+            <Image
+              src={BurgerIcon}
+              alt="burger"
+              width={100}
+              height={100}
+            />
+            <Image
+              src={CocktailIcon}
+              alt="Cocktail"
+              width={100}
+              height={100}
+            />
+            <Image
+              src={SaladIcon}
+              alt="Salad"
+              width={100}
+              height={100}
+            />
+            <Image
+              src={SushiIcon}
+              alt="Sushi"
+              width={100}
+              height={100}
+            />
           </animated.div>
         </Grid>
       </Grid>

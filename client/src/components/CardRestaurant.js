@@ -3,7 +3,7 @@ import { Paper, Grid, Chip } from '@mui/material';
 import EuroIcon from '@mui/icons-material/Euro';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { PATH_STORES } from '../routes/paths';
 import CloudinaryImage from './shared/CloudinaryImage';
 
@@ -19,17 +19,17 @@ const CardRestaurant = ({
   const [chipClicked, setChipClicked] = useState(false);
   const [cardClicked, setCardClicked] = useState(false);
 
-  let navigate = useNavigate();
+  let router = useRouter();
 
   useEffect(() => {
     if (cardClicked && !chipClicked) {
-      navigate(`/${PATH_STORES.store}/${_id}`);
+      router.push(`${PATH_STORES.store}/${_id}`);
     }
     return () => {
       setChipClicked(false);
       setCardClicked(false);
     };
-  }, [chipClicked, cardClicked, navigate, _id]);
+  }, [chipClicked, cardClicked, _id, router]);
 
   return (
     <Paper

@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "start": "concurrently \"yarn start-client\" \"yarn start-server\"",
-    "start-client": "yarn workspace client start",
+    "start-client": "yarn workspace client dev",
     "start-server": "yarn workspace server start-dev"
   },
   "repository": {

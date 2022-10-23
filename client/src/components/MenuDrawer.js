@@ -7,7 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import sidebarConfig from '../layout/sidebarConfig';
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link';
 
 const MenuDrawer = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -31,14 +31,16 @@ const MenuDrawer = () => {
       onKeyDown={toggleDrawer(false)}>
       <List>
         {sidebarConfig.map((menuItem) => (
-          <NavLink
+          <Link
             key={menuItem.path}
             style={navLinkStyle}
-            to={menuItem.path}>
-            <ListItem button key={menuItem.path}>
-              <ListItemText primary={menuItem.title} />
-            </ListItem>
-          </NavLink>
+            href={menuItem.path}>
+            <a>
+              <ListItem button key={menuItem.path}>
+                <ListItemText primary={menuItem.title} />
+              </ListItem>
+            </a>
+          </Link>
         ))}
       </List>
     </Box>
