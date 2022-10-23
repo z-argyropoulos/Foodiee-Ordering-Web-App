@@ -3,15 +3,16 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Scooter from '../icons/scooter.svg';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuDrawer from './MenuDrawer';
 import { PATH_PAGE } from '../routes/paths';
-import { Link } from 'react-router-dom';
 import { useStoresCart } from '../hooks/useStoresCart';
 import { storesSumPrice } from '../helpers/sums';
 import StoreCart from './StoreCart';
+
+import Link from 'next/link';
+import ClickableHeaderLogo from './ClickableHeaderLogo';
 
 const MenuAppBar = () => {
   const { carts } = useStoresCart();
@@ -39,22 +40,8 @@ const MenuAppBar = () => {
               flexGrow: 1,
               textAlign: 'center',
             }}>
-            <Link to={PATH_PAGE.root}>
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  allignCenter: 'center',
-                }}>
-                <img
-                  src={Scooter}
-                  alt="Foodie Logo"
-                  style={{ width: '25px' }}
-                />
-                <Typography variant="h6" sx={{ ml: 1 }}>
-                  Foodiee
-                </Typography>
-              </Box>
+            <Link href={PATH_PAGE.root} passHref>
+              <ClickableHeaderLogo />
             </Link>
           </Typography>
           <div onMouseEnter={handleOpenCart} onClick={handleOpenCart}>

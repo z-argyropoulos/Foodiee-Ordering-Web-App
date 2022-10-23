@@ -3,7 +3,7 @@ import { Grid } from '@mui/material';
 import CardRestaurantSkeleton from '../CardRestaurantSkeleton';
 import { useSpring, animated } from 'react-spring';
 
-const CardsGridWrapper = ({ stores, loading }) => {
+const CardsGridWrapper = ({ stores, loading = false }) => {
   // card animation
   const props = useSpring({
     to: { opacity: loading ? 0 : 1 },
@@ -18,7 +18,8 @@ const CardsGridWrapper = ({ stores, loading }) => {
         sx={{ p: 2, mt: 0 }}
         justifyContent="center"
         rowSpacing={3}
-        columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
+        columnSpacing={{ xs: 2, sm: 3, md: 4 }}
+      >
         {loading ? (
           <CardRestaurantSkeleton amount={8} />
         ) : (

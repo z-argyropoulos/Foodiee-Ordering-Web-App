@@ -3,13 +3,14 @@ import { useRoutes } from 'react-router';
 import { PATH_PAGE } from './paths';
 import Spinner from '../components/shared/Spinner';
 
-const LazyLoadComponent = (Component) => (props) => {
-  return (
-    <Suspense fallback={<Spinner />}>
-      <Component {...props} />
-    </Suspense>
-  );
-};
+const LazyLoadComponent = (Component) =>
+  function SuspenseComponent(props) {
+    return (
+      <Suspense fallback={<Spinner />}>
+        <Component {...props} />
+      </Suspense>
+    );
+  };
 
 const Router = () => {
   return useRoutes([

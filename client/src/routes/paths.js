@@ -4,8 +4,8 @@ const combinePath = (root, subpath) => {
 
 const PATH_PAGE = {
   root: '/',
-  stores: 'stores',
-  checkout: 'checkout',
+  stores: '/stores',
+  checkout: '/checkout',
 };
 
 const PATH_STORES = {

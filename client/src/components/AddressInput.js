@@ -3,9 +3,9 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { InputAdornment, Button, Grid } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { useUser } from '../hooks/useUser';
-import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../src/hooks/useUser';
 import { PATH_STORES } from '../routes/paths';
+import { useRouter } from 'next/router';
 
 const mockAddresses = [
   'Korai 2, Moschato 183 45',
@@ -16,7 +16,7 @@ const mockAddresses = [
 const AddressInput = () => {
   const { setAddress } = useUser();
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const [addressInput, setAddressInput] = useState('');
 
@@ -24,7 +24,7 @@ const AddressInput = () => {
     setAddress(addressInput);
     // redirect to stores list delivering
     // to this address ("supposed to")
-    navigate(PATH_STORES.root);
+    router.push(PATH_STORES.root);
   };
 
   const handleChange = (e, v) => {
