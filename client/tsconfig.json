@@ -24,6 +24,7 @@
       "@interfaces/*": ["src/interfaces/*"],
       "@layout/*": ["src/layout/*"],
       "@pages/*": ["src/pages/*"],
+      "@redux/*": ["src/redux/*"],
       "@routes/*": ["src/routes/*"],
       "@services/*": ["src/services/*"],
       "@styles/*": ["src/styles/*"],
