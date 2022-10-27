@@ -52,7 +52,7 @@ const CardRestaurant = ({
               <p>{description}</p>
             </Grid>
             <Grid item sx={{ mt: 1, mb: 1 }}>
-              {categories.sort().map((category) => (
+              {[...categories].sort().map((category) => (
                 <Chip
                   key={category}
                   label={category}
