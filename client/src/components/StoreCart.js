@@ -1,6 +1,6 @@
 import { Grid, Button, Typography } from '@mui/material';
 import { useStoreCart, useStoresCart } from '../hooks/useStoresCart';
-import { PATH_PAGE } from '../routes/paths';
+import { PATH_RESTAURANTS } from '../routes/paths';
 import Link from 'next/link';
 import {
   storesSumPrice,
@@ -79,7 +79,9 @@ const StoreCart = ({ storeId }) => {
             variant="contained"
             color="secondary"
             sx={{ my: 2 }}>
-            <Link href={`/${PATH_PAGE.checkout}`}>Checkout</Link>
+            <Link href={`/${PATH_RESTAURANTS.checkout}`}>
+              Checkout
+            </Link>
           </Button>
         </>
       )}

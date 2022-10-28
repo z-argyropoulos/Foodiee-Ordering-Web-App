@@ -2,7 +2,7 @@ import { PATH_PAGE } from '../routes/paths';
 
 const sidebarConfig = [
   { title: 'Home', path: PATH_PAGE.root },
-  { title: 'Stores List', path: PATH_PAGE.stores },
+  { title: 'Browse restaurants', path: PATH_PAGE.restaurants },
 ];
 
 export default sidebarConfig;

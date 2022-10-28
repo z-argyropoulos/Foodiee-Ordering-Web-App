@@ -4,7 +4,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { InputAdornment, Button, Grid } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useUser } from '../../src/hooks/useUser';
-import { PATH_STORES } from '../routes/paths';
+import { PATH_RESTAURANTS } from '../routes/paths';
 import { useRouter } from 'next/router';
 
 const mockAddresses = [
@@ -24,7 +24,7 @@ const AddressInput = () => {
     setAddress(addressInput);
     // redirect to stores list delivering
     // to this address ("supposed to")
-    router.push(PATH_STORES.root);
+    router.push(PATH_RESTAURANTS.root);
   };
 
   const handleChange = (e, v) => {
