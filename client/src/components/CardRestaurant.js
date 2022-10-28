@@ -4,13 +4,13 @@ import EuroIcon from '@mui/icons-material/Euro';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 import { useRouter } from 'next/router';
-import { PATH_STORES } from '../routes/paths';
+import { PATH_RESTAURANTS } from '../routes/paths';
 import CloudinaryImage from './shared/CloudinaryImage';
 
 const CardRestaurant = ({
   _id,
   name,
-  description,
+  description = '',
   categories,
   rating,
   deliveryTimeRange,
@@ -23,7 +23,7 @@ const CardRestaurant = ({
 
   useEffect(() => {
     if (cardClicked && !chipClicked) {
-      router.push(`${PATH_STORES.store}/${_id}`);
+      router.push(`${PATH_RESTAURANTS.restaurants}/${_id}`);
     }
     return () => {
       setChipClicked(false);

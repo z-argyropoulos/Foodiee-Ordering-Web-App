@@ -1,5 +1,5 @@
 import { AppDispatch } from '@redux/store';
-import { getStores } from '@services/stores';
+import { getStores } from '@services/restaurants';
 import { restaurantsSlice } from '@redux/slices/restaurants';
 
 // Extra async/thunk reducers

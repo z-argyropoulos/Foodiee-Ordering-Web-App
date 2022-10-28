@@ -1,7 +1,7 @@
 import CardsGridWrapper from '../components/shared/CardsGridWrapper';
 import LandingImage from '../components/LandingImage';
 import { Paper } from '@mui/material';
-import IRestaurant from '@interfaces/IRestaurant';
+import type IRestaurant from '@interfaces/IRestaurant';
 import { wrapper } from '@redux/store';
 import { fetchAllRestaurants } from '@redux/actions/restaurants';
 
@@ -26,7 +26,7 @@ const Home = ({ restaurants }: IHomeProps) => {
           backgroundColor: '#242424',
           minHeight: 'calc(100vh - 60px)',
         }}>
-        <CardsGridWrapper stores={restaurants} />
+        <CardsGridWrapper restaurants={restaurants} />
       </Paper>
     </>
   );

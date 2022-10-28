@@ -2,8 +2,17 @@ import CardRestaurant from '../CardRestaurant';
 import { Grid } from '@mui/material';
 import CardRestaurantSkeleton from '../CardRestaurantSkeleton';
 import { useSpring, animated } from 'react-spring';
+import type IRestaurant from '@interfaces/IRestaurant';
 
-const CardsGridWrapper = ({ stores, loading = false }) => {
+export interface ICardsGridWrapper {
+  restaurants: IRestaurant[] | undefined;
+  loading?: boolean;
+}
+
+const CardsGridWrapper = ({
+  restaurants,
+  loading = false,
+}: ICardsGridWrapper) => {
   // card animation
   const props = useSpring({
     to: { opacity: loading ? 0 : 1 },
@@ -18,12 +27,11 @@ const CardsGridWrapper = ({ stores, loading = false }) => {
         sx={{ p: 2, mt: 0 }}
         justifyContent="center"
         rowSpacing={3}
-        columnSpacing={{ xs: 2, sm: 3, md: 4 }}
-      >
+        columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
         {loading ? (
           <CardRestaurantSkeleton amount={8} />
         ) : (
-          stores.map((restaurant) => (
+          restaurants?.map((restaurant) => (
             <Grid key={restaurant._id} item xs={12} sm={6} lg={3}>
               <animated.div style={props}>
                 <CardRestaurant {...restaurant} />
@@ -33,8 +41,8 @@ const CardsGridWrapper = ({ stores, loading = false }) => {
         )}
       </Grid>
       {!loading &&
-        !stores.length &&
-        'No stores could be found with the selected options. Please remove some filters to expand the search.'}
+        !restaurants?.length &&
+        'No restaurants could be found with the selected options. Please remove some filters to expand the search.'}
     </>
   );
 };
