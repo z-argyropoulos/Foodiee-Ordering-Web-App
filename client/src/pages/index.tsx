@@ -4,6 +4,7 @@ import { Paper } from '@mui/material';
 import type IRestaurant from '@interfaces/IRestaurant';
 import { wrapper } from '@redux/store';
 import { fetchAllRestaurants } from '@redux/actions/restaurants';
+import DefaultHead from '@components/head/DefaultHead';
 
 export interface IHomeProps {
   restaurants: [IRestaurant];
@@ -19,6 +20,8 @@ const Home = ({ restaurants }: IHomeProps) => {
 
   return (
     <>
+      <DefaultHead />
+
       <LandingImage />
       <Paper
         square

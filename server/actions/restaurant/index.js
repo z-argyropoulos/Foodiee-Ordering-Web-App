@@ -11,6 +11,10 @@ const getRestaurants = async () => {
   return Restaurant.find({}, { __v: 0 }).exec();
 };
 
+const getRestaurantsIds = async () => {
+  return Restaurant.find({}, '_id').exec();
+};
+
 // Return restaurant
 const getRestaurantDetails = async (restaurantId) => {
   return Restaurant.findOne({ _id: restaurantId }, { __v: 0 }).exec();
@@ -19,5 +23,6 @@ const getRestaurantDetails = async (restaurantId) => {
 module.exports = {
   addRestaurant,
   getRestaurants,
+  getRestaurantsIds,
   getRestaurantDetails,
 };

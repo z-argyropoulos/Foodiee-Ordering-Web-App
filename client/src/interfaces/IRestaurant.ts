@@ -1,5 +1,5 @@
 import IAddress from './IAddress';
-import IItem from './IItem';
+import type ICategoryItems from './ICategoryItems';
 
 interface IRestaurant {
   _id: string;
@@ -11,7 +11,7 @@ interface IRestaurant {
   deliveryTimeRange: number[];
   minOrder: string;
   isOpen: boolean;
-  catalog?: IItem[];
+  catalog: ICategoryItems[];
 }
 
 export default IRestaurant;

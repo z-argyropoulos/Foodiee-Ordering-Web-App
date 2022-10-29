@@ -5,6 +5,7 @@ interface IItem {
   price: number;
   quantity: number;
   category: string;
+  restaurantId: string;
 }
 
 export default IItem;
