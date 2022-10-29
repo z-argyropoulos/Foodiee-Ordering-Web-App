@@ -1,8 +1,9 @@
 import { createTheme } from '@mui/material';
 
+export const progressBarColor = '#ffeb3b';
+
 export const theme = createTheme({
   palette: {
-    type: 'dark',
     primary: {
       main: '#141414',
       contrastText: '#ffffff',
