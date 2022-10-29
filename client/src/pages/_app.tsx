@@ -7,10 +7,12 @@ import { ThemeProvider } from '@mui/material';
 import MenuAppBar from '../components/MenuAppBar';
 import { wrapper } from '@redux/store';
 import '../styles/app.scss';
+import RouterProgressBar from '@components/RouterProgressBar';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
+      <RouterProgressBar />
       <Head>
         <meta charSet="utf-8" />
         <meta
