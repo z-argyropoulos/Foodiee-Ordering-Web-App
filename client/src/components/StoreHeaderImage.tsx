@@ -1,5 +1,5 @@
 import { Card, Box, Typography } from '@mui/material';
-import { useStoreData } from '../hooks/useStoreData';
+import useRestaurantData from '@hooks/data/useRestaurantData';
 import CloudinaryImage from './shared/CloudinaryImage';
 
 const styles = {
@@ -17,10 +17,11 @@ const styles = {
     width: '100%',
     fontSize: '0.97em',
   },
-};
+} as const;
 
 const StoreHeaderImage = () => {
-  const { _id: id, name, description } = useStoreData();
+  const { _id: id, name, description } = useRestaurantData();
+
   return (
     <>
       <Card style={styles.card}>

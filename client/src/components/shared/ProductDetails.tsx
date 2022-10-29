@@ -1,6 +1,15 @@
 import { Grid, Card, Typography } from '@mui/material';
 import AddToCartButton from './AddToCartButton';
 import CloudinaryImage from './CloudinaryImage';
+import type IItem from '@interfaces/IItem';
+
+export interface IProductDetailsProps extends Partial<IItem> {
+  maxQuantity: number;
+  size?: string;
+  storeId?: string;
+  storeName?: string;
+  productId: string;
+}
 
 const ProductDetails = ({
   storeId,
@@ -11,7 +20,7 @@ const ProductDetails = ({
   price,
   maxQuantity,
   size,
-}) => {
+}: IProductDetailsProps) => {
   return (
     <Grid item key={productId} sm={12}>
       <Card

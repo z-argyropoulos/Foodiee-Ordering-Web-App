@@ -5,6 +5,7 @@ const combinePath = (root: string, subpath: string) => {
 const PATH_PAGE = {
   root: '/',
   restaurants: '/restaurants',
+  restaurant: '/restaurant',
   checkout: '/checkout',
 };
 

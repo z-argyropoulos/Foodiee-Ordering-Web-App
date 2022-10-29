@@ -1,28 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type IRestaurant from '@interfaces/IRestaurant';
 import clientStoreHydration from '@redux/reducers/clientStoreHydration';
-import restaurantsReducers from '@redux/reducers/restaurants';
+import restaurantReducers from '@redux/reducers/restaurant';
 
 // Define a type for the slice state
-export interface RestaurantsState {
-  restaurants: IRestaurant[];
+export interface RestaurantState {
+  restaurant: IRestaurant | null;
 }
 
 // Define the initial state using that type
-const initialState: RestaurantsState = {
-  restaurants: [],
+const initialState: RestaurantState = {
+  restaurant: null,
 };
 
-const sliceName = 'restaurants';
+const sliceName = 'restaurant';
 
-export const restaurantsSlice = createSlice({
+export const restaurantSlice = createSlice({
   name: sliceName,
   initialState,
-  reducers: restaurantsReducers,
+  reducers: restaurantReducers,
   extraReducers: {
     // Special reducer for hydrating the state. Special case for next-redux-wrapper
     ...clientStoreHydration(sliceName),
   },
 });
 
-export default restaurantsSlice.reducer;
+export default restaurantSlice.reducer;

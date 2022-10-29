@@ -4,15 +4,21 @@ import { SWRAxiosFetcher } from '@utils/swr';
 import useSWR from 'swr';
 
 const baseURL = process.env.NEXT_PUBLIC_SERVER_API + '/restaurants';
-const storesInstance = axios.create({
+const restaurantsInstance = axios.create({
   baseURL,
 });
 
 // SWR (with axios fetcher function)
-const restaurantSWRFetcher = SWRAxiosFetcher(storesInstance);
+const restaurantSWRFetcher = SWRAxiosFetcher(restaurantsInstance);
 
 const getStores = () => {
-  return storesInstance.get<{ restaurants: IRestaurant[] }>('/');
+  return restaurantsInstance.get<{ restaurants: IRestaurant[] }>('/');
+};
+
+const getRestaurantsPaths = () => {
+  return restaurantsInstance.get<{
+    paths: { params: { id: string }[] };
+  }>('/paths');
 };
 
 const getFilteredRestaurantsSWR = () => {
@@ -23,7 +29,7 @@ const getFilteredRestaurantsSWR = () => {
 };
 
 const getStore = (restaurantId: string) => {
-  return storesInstance.get<{ restaurant: IRestaurant }>(
+  return restaurantsInstance.get<{ restaurant: IRestaurant }>(
     '/byIdLegacy',
     {
       params: {
@@ -32,4 +38,10 @@ const getStore = (restaurantId: string) => {
     }
   );
 };
-export { getStores, getFilteredRestaurantsSWR, getStore };
+
+export {
+  getStores,
+  getRestaurantsPaths,
+  getFilteredRestaurantsSWR,
+  getStore,
+};
