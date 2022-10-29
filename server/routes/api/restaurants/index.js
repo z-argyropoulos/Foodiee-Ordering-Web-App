@@ -11,6 +11,7 @@ router.get('/byId', restaurantController.getById);
 // version that had the catalog embedded inside
 // of the restaurant document
 router.get('/byIdLegacy', restaurantController.getByIdLegacy);
+router.get('/paths', restaurantController.getRestaurantsPaths);
 
 router.use('/categories', require('./categories'));
 

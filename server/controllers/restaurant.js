@@ -1,6 +1,7 @@
 const {
   addRestaurant,
   getRestaurants,
+  getRestaurantsIds,
   getRestaurantDetails,
 } = require('../actions/restaurant');
 const { getItemsByRestaurantId } = require('../actions/item');
@@ -55,6 +56,19 @@ const restaurantController = {
         res
           .status(200)
           .json({ restaurant: { ...restaurant._doc, catalog } });
+      })
+      .catch((err) => res.status(400).json({ error: err.message }));
+  },
+
+  getRestaurantsPaths: (_, res) => {
+    getRestaurantsIds()
+      .then((restaurantIds) => {
+        const paths = restaurantIds.map(({ _id }) => ({
+          params: {
+            id: _id.toString(),
+          },
+        }));
+        res.status(200).json({ paths });
       })
       .catch((err) => res.status(400).json({ error: err.message }));
   },
