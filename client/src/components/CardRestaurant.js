@@ -37,11 +37,7 @@ const CardRestaurant = ({
       style={{ overflow: 'hidden', cursor: 'pointer' }}>
       <Grid container onClick={() => setCardClicked(true)}>
         <Grid item>
-          <CloudinaryImage
-            publicId={`stores/${_id}`}
-            width="600"
-            height="400"
-          />
+          <CloudinaryImage publicId={`stores/${_id}`} size="md" />
         </Grid>
         <Grid container item>
           <Grid container item direction="column" sx={{ p: 2 }}>

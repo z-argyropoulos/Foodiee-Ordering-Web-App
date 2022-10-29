@@ -21,7 +21,7 @@ const getRestaurantsPaths = () => {
   }>('/paths');
 };
 
-const getFilteredRestaurantsSWR = () => {
+const useFilteredRestaurantsSWR = () => {
   return useSWR<{ restaurants: IRestaurant[] }>(
     baseURL,
     restaurantSWRFetcher
@@ -42,6 +42,6 @@ const getStore = (restaurantId: string) => {
 export {
   getStores,
   getRestaurantsPaths,
-  getFilteredRestaurantsSWR,
+  useFilteredRestaurantsSWR,
   getStore,
 };
