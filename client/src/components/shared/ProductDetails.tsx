@@ -19,7 +19,7 @@ const ProductDetails = ({
   description,
   price,
   maxQuantity,
-  size,
+  size = 'md',
 }: IProductDetailsProps) => {
   return (
     <Grid item key={productId} sm={12}>
@@ -33,11 +33,6 @@ const ProductDetails = ({
             <CloudinaryImage
               publicId={`product/${productId}`}
               size={size}
-              styles={{
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
-              }}
             />
           </Grid>
           <Grid

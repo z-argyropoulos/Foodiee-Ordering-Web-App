@@ -1,7 +1,7 @@
-import { getFilteredRestaurantsSWR } from '@services/restaurants';
+import { useFilteredRestaurantsSWR } from '@services/restaurants';
 
 const useFilteredRestaurants = () => {
-  const { data, error } = getFilteredRestaurantsSWR();
+  const { data, error } = useFilteredRestaurantsSWR();
 
   return {
     restaurants: data?.restaurants,

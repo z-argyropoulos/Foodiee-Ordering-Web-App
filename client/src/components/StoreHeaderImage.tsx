@@ -5,7 +5,7 @@ import CloudinaryImage from './shared/CloudinaryImage';
 const styles = {
   card: {
     position: 'relative',
-    height: '45vh',
+    maxHeight: '45vh',
   },
   overlayText: {
     padding: '1rem 0',
@@ -25,15 +25,7 @@ const StoreHeaderImage = () => {
   return (
     <>
       <Card style={styles.card}>
-        <CloudinaryImage
-          publicId={`store_covers/${id}`}
-          size="lg"
-          styles={{
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
-        />
+        <CloudinaryImage publicId={`store_covers/${id}`} size="lg" />
         <div style={styles.overlayText}>
           <div style={{ maxWidth: '95%', margin: '0 auto' }}>
             <Typography variant="h3">{name}</Typography>
