@@ -6,6 +6,7 @@ import { useUser } from '@hooks/useUser';
 import useFilteredRestaurants from '@hooks/data/useFilteredRestaurants';
 import restaurantCategories from '@models/restaurantCategories';
 import type { RestaurantCategoryOptions } from '@models/restaurantCategories';
+import DefaultHead from '@components/head/DefaultHead';
 
 const StoresList = () => {
   const { address } = useUser();
@@ -50,21 +51,25 @@ const StoresList = () => {
       );
 
   return (
-    <Stack sx={{ mt: '75px', mx: 2 }}>
-      <Typography variant="h5" sx={{ my: 2, fontStyle: 'italic' }}>
-        Showing{' '}
-        {address ? `restaurants for ${address}` : 'all restaurants'}
-      </Typography>
-      <CategoryFilters
-        categories={categories}
-        handleCategoryChange={handleCategoryChange}
-        clearSelectedCategories={clearSelectedCategories}
-      />
-      <CardsGridWrapper
-        loading={isLoading}
-        restaurants={filteredRestaurants}
-      />
-    </Stack>
+    <>
+      <DefaultHead />
+
+      <Stack sx={{ mt: '75px', mx: 2 }}>
+        <Typography variant="h5" sx={{ my: 2, fontStyle: 'italic' }}>
+          Showing{' '}
+          {address ? `restaurants for ${address}` : 'all restaurants'}
+        </Typography>
+        <CategoryFilters
+          categories={categories}
+          handleCategoryChange={handleCategoryChange}
+          clearSelectedCategories={clearSelectedCategories}
+        />
+        <CardsGridWrapper
+          loading={isLoading}
+          restaurants={filteredRestaurants}
+        />
+      </Stack>
+    </>
   );
 };
 
