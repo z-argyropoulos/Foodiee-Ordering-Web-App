@@ -17,8 +17,11 @@
     "baseUrl": "./",
     "paths": {
       "@components/*": ["src/components/*"],
+      "@config/*": ["src/config/*"],
+      "@customEnvs": ["src/config/customEnvs"],
       "@contexts/*": ["src/contexts/*"],
       "@functions/*": ["src/functions/*"],
+      "@graphql/*": ["src/graphql/*"],
       "@helpers/*": ["src/helpers/*"],
       "@hooks/*": ["src/hooks/*"],
       "@interfaces/*": ["src/interfaces/*"],

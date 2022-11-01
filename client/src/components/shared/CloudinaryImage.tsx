@@ -7,8 +7,7 @@ import useImageDimensions from '@hooks/images/useImageDimensions';
 // Create a Cloudinary instance and set your cloud name.
 const cloudinaryInstance = new Cloudinary({
   cloud: {
-    cloudName:
-      process.env.NEXT_PUBLIC_REACT_APP_CLOUDINARY_CLOUD_NAME,
+    cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
   },
 });
 
