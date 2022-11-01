@@ -3,7 +3,7 @@ import LandingImage from '../components/LandingImage';
 import { Paper } from '@mui/material';
 import type IRestaurant from '@interfaces/IRestaurant';
 import { wrapper } from '@redux/store';
-import { fetchAllRestaurants } from '@redux/actions/restaurants';
+import { queryAllRestaurantsGQL } from '@redux/actions/restaurants';
 import DefaultHead from '@components/head/DefaultHead';
 
 export interface IHomeProps {
@@ -37,7 +37,8 @@ const Home = ({ restaurants }: IHomeProps) => {
 
 export const getStaticProps = wrapper.getStaticProps(
   (store) => async () => {
-    await store.dispatch(fetchAllRestaurants());
+    // await store.dispatch(fetchAllRestaurants());
+    await store.dispatch(queryAllRestaurantsGQL());
 
     return {
       props: {

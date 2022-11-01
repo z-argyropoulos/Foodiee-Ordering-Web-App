@@ -8,6 +8,8 @@ import MenuAppBar from '../components/MenuAppBar';
 import { wrapper } from '@redux/store';
 import '../styles/app.scss';
 import RouterProgressBar from '@components/RouterProgressBar';
+import { ApolloProvider } from '@apollo/client';
+import client from '@graphql/apolloClient';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -20,14 +22,16 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           content="width=device-width, initial-scale=1"
         />
       </Head>
-      <StoreCartProvider>
-        <UserProvider>
-          <ThemeProvider theme={theme}>
-            <MenuAppBar />
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </UserProvider>
-      </StoreCartProvider>
+      <ApolloProvider client={client}>
+        <StoreCartProvider>
+          <UserProvider>
+            <ThemeProvider theme={theme}>
+              <MenuAppBar />
+              <Component {...pageProps} />
+            </ThemeProvider>
+          </UserProvider>
+        </StoreCartProvider>
+      </ApolloProvider>
     </>
   );
 };
