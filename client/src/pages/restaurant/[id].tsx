@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { Stack, Grid } from '@mui/material';
+import { Stack, Grid, TextField, InputLabel } from '@mui/material';
 import StoreHeaderImage from '@components/StoreHeaderImage';
 import StoreDetails from '@components/StoreDetails';
 import StoreProductCatalog from '@components/StoreProductCatalog';
@@ -29,6 +29,10 @@ const Store = ({
       <Stack sx={{ mt: '75px', mx: 2 }}>
         <StoreHeaderImage />
         <StoreDetails />
+        <InputLabel sx={{ mb: 1 }} error required>
+          First name
+        </InputLabel>
+        <TextField error />
         <Grid container>
           <Grid item md={8}>
             <StoreProductCatalog />

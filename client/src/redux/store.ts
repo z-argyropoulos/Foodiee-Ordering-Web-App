@@ -5,6 +5,7 @@ import {
 } from '@reduxjs/toolkit';
 import restaurantsReducer from '@redux/slices/restaurants';
 import restaurantReducer from '@redux/slices/restaurant';
+import cartReducer from '@redux/slices/cart';
 import { createWrapper } from 'next-redux-wrapper';
 
 // Redux store
@@ -12,6 +13,7 @@ const store = configureStore({
   reducer: {
     restaurants: restaurantsReducer,
     restaurant: restaurantReducer,
+    cart: cartReducer,
   },
 });
 

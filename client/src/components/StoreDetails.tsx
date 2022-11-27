@@ -40,7 +40,11 @@ const StoreDetails = () => {
                   <EmojiEmotionsIcon />
                 </Grid>
                 <Grid item>
-                  {rating} - {ratingCategory(parseInt(rating))}
+                  {rating && (
+                    <>
+                      {rating} - {ratingCategory(parseInt(rating))}
+                    </>
+                  )}
                 </Grid>
               </Grid>
             </Grid>
@@ -50,8 +54,8 @@ const StoreDetails = () => {
                   <BusinessIcon />
                 </Grid>
                 <Grid item>
-                  {address.street}, {address.region},{' '}
-                  {address.postal_code}
+                  {address?.street}, {address?.region},{' '}
+                  {address?.postal_code}
                 </Grid>
               </Grid>
             </Grid>
@@ -60,7 +64,9 @@ const StoreDetails = () => {
                 <Grid item sx={{ mt: 0.5 }}>
                   <TimelapseIcon />
                 </Grid>
-                <Grid item>{deliveryTimeRange.join(' - ')} mins</Grid>
+                <Grid item>
+                  {deliveryTimeRange?.join(' - ')} mins
+                </Grid>
               </Grid>
             </Grid>
           </Grid>

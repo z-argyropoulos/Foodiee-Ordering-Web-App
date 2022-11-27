@@ -5,6 +5,8 @@ import type IRestaurant from '@interfaces/IRestaurant';
 import { wrapper } from '@redux/store';
 import { queryAllRestaurantsGQL } from '@redux/actions/restaurants';
 import DefaultHead from '@components/head/DefaultHead';
+import { useEffect } from 'react';
+import { useAppDispatch } from '@hooks/redux/useAppDispatch';
 
 export interface IHomeProps {
   restaurants: [IRestaurant];
@@ -17,6 +19,9 @@ const Home = ({ restaurants }: IHomeProps) => {
   // const { restaurants } = useAppSelector(
   //   (state) => state.restaurants
   // );
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {}, [restaurants]);
 
   return (
     <>

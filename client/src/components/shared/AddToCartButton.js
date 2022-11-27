@@ -1,6 +1,11 @@
 import { useEffect, useState, useMemo } from 'react';
 import { Button, ButtonGroup, Box } from '@mui/material';
 import { useStoresCart } from '../../hooks/useStoresCart';
+import { useAppDispatch } from '@hooks/redux/useAppDispatch';
+import {
+  addStoreToCart,
+  removeStoreFromCart,
+} from '@redux/actions/cart';
 
 const AddToCartButton = ({ store, product }) => {
   const { storeId } = store;
@@ -9,6 +14,8 @@ const AddToCartButton = ({ store, product }) => {
 
   const { carts, addToCart, removeFromCart, updateCart } =
     useStoresCart();
+
+  const dispatch = useAppDispatch();
 
   const [openQuantitySelector, setOpenQuantitySelector] =
     useState(false);
@@ -83,7 +90,18 @@ const AddToCartButton = ({ store, product }) => {
         maxWidth: { sm: '150px' },
       }}
       onClick={() => {
-        addToCart(store, product);
+        // addToCart(store, product);
+        dispatch(
+          addStoreToCart({
+            storeId: store.storeId,
+            storeName: 'ASDF',
+          })
+        );
+
+        setTimeout(() => {
+          dispatch(removeStoreFromCart({ storeId: store.storeId }));
+        }, 10000);
+
         setOpenQuantitySelector(true);
       }}>
       Add To Cart

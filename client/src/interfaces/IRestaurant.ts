@@ -11,7 +11,7 @@ interface IRestaurant {
   deliveryTimeRange: number[];
   minOrder: string;
   isOpen: boolean;
-  catalog: ICategoryItems[];
+  catalog: ICategoryItems[] | undefined;
 }
 
 export default IRestaurant;
