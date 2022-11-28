@@ -2,21 +2,22 @@
 
 ## Live deployed application
 
-https://foodiee-client.herokuapp.com/
+https://foodiee.vercel.app/
 
 ## Run the project locally
 
 In Root:
 
 - `yarn install` to install dependencies
-- `yarn start-client` to start client development server
-- `yarn start-server` to start server in development mode
+- Inside each workspace (client/server directory) copy the contents of the .env.example file located in that directory, paste them in a new .env file and provided the enviromental variables with the appropriate values (that you were provided to run locally)
+- Open a terminal and run `yarn start-client` to start client development server
+- Open a second terminal and `yarn start-server` to start server in development mode
+  You can skip the last two steps by opening two terminals and running two commands by opening a single terminal and running `yarn start-dev` (but this is not optimal for development purposes).
 
-## Developer's Manual
+## Project books
 
-https://github.com/HRSArgyropoulos/Foodiee-Ordering-Web-App/blob/master/Foodiee%20Manual.pdf
+[Click here to view Developer's Manual book (MERN stack)](docs/Foodiee%20Manual.pdf)
 
-## Next.js/TypeScript/GraphQL transformation
+[Click here to view Proposal book](docs/Proposal.md)
 
-- [Proposal](docs/Proposal.md)
-- [Implementation]()
+[Click here to view Next.js/TypeScript/GraphQL Migration book](docs/Migration.pdf)
