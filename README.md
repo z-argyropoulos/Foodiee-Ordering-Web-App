@@ -16,8 +16,10 @@ In Root:
 
 ## Project books
 
-[Click here to view Developer's Manual book (MERN stack)](docs/Foodiee%20Manual.pdf)
+[Click here to view initial MERN stack developer's manual](docs/Foodiee%20Manual.pdf)
 
 [Click here to view Proposal book](docs/Proposal.md)
 
 [Click here to view Next.js/TypeScript/GraphQL Migration book](docs/Migration.pdf)
+
+[Click here to view Next.js/TypeScript/GraphQL Migration presentation](docs/Presentation.pdf)
